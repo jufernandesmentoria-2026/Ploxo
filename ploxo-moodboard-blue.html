@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ploxo — Brand Mood Board (Blue)</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Oxanium:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #0C0D10;
+    --surface:   #13151A;
+    --surface2:  #1A1D24;
+    --border:    rgba(255,255,255,0.07);
+    --accent:    #4AA8FF;
+    --accent2:   #2E8FE8;
+    --accent-dim: rgba(74,168,255,0.12);
+    --white:     #F4F5F7;
+    --muted:     #6B7280;
+    --danger:    #FF6B6B;
+    --warn:      #FFD166;
+
+    --font-display: 'Syne', sans-serif;
+    --font-body:    'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 1180px; margin: 0 auto; padding: 60px 32px 100px; }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 72px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header-left { display: flex; align-items: center; gap: 18px; }
+  .logo-mark {
+    width: 46px; height: 46px;
+    background: var(--accent);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 32px rgba(74,168,255,0.3);
+  }
+  .logo-mark svg { width: 26px; height: 26px; }
+  .brand-name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--white);
+  }
+  .brand-name span { color: var(--accent); }
+  .header-badge {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 100px;
+  }
+
+  /* ── SECTION LABEL ── */
+  .sec-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .sec-label::after {
+    content: '';
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
+  }
+
+  /* ── SECTION TITLE ── */
+  .sec-title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .sec-sub {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+
+  section { margin-bottom: 80px; }
+
+  /* ══════════════════════════════
+     01 — HERO / LOGO
+  ══════════════════════════════ */
+  .logo-hero {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 64px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    align-items: center;
+  }
+  .logo-variant {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 20px; padding: 32px 20px;
+    border-radius: 16px;
+    min-height: 160px;
+  }
+  .logo-variant.dark  { background: #0C0D10; }
+  .logo-variant.light { background: #F4F5F7; }
+  .logo-variant.green { background: var(--accent); }
+
+  .logotype {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .logotype.sz-lg { font-size: 42px; }
+  .logotype.sz-md { font-size: 36px; }
+  .logotype.sz-sm { font-size: 36px; }
+
+  .logo-icon {
+    width: 40px; height: 40px;
+    border-radius: 11px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .logo-icon.on-dark  { background: var(--accent); }
+  .logo-icon.on-light { background: #0C0D10; }
+  .logo-icon.on-green { background: #0C0D10; }
+  .logo-icon svg { width: 22px; height: 22px; }
+
+  .logo-text-dark  { color: #F4F5F7; }
+  .logo-text-light { color: #0C0D10; }
+  .logo-text-green { color: #0C0D10; }
+
+  .logo-var-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .lv-label-dark  { color: var(--muted); }
+  .lv-label-light { color: #9CA3AF; }
+  .lv-label-green { color: rgba(0,0,0,0.45); }
+
+  /* ── LETTERING LOGO B ── */
+  .lettering-b {
+    font-family: 'Oxanium', sans-serif;
+    font-weight: 800;
+    font-size: 52px;
+    letter-spacing: -3px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+  }
+  .lettering-b .dot {
+    display: inline-block;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    margin-left: 3px;
+    margin-bottom: 6px;
+    flex-shrink: 0;
+  }
+  .lettering-b.on-dark  { color: #F4F5F7; }
+  .lettering-b.on-light { color: #0C0D10; }
+  .lettering-b.on-accent { color: #0C0D10; }
+  .lettering-b.on-dark  .dot { background: var(--accent); }
+  .lettering-b.on-light .dot { background: var(--accent2); }
+  .lettering-b.on-accent .dot { background: rgba(0,0,0,0.4); }
+
+  .lettering-underline {
+    display: block;
+    height: 2.5px;
+    border-radius: 2px;
+    margin-top: 5px;
+  }
+  .on-dark  .lettering-underline { background: linear-gradient(90deg, var(--accent), transparent); }
+  .on-light .lettering-underline { background: linear-gradient(90deg, var(--accent2), transparent); }
+  .on-accent .lettering-underline { background: linear-gradient(90deg, rgba(0,0,0,0.25), transparent); }
+
+  /* ══════════════════════════════
+     02 — COLOR PALETTE
+  ══════════════════════════════ */
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+  }
+  .swatch {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .swatch-color {
+    height: 100px;
+    position: relative;
+  }
+  .swatch-color.primary { background: var(--accent); box-shadow: 0 8px 24px rgba(74,168,255,0.25); }
+  .swatch-color.c1  { background: #0C0D10; }
+  .swatch-color.c2  { background: #13151A; }
+  .swatch-color.c3  { background: #1A1D24; }
+  .swatch-color.c4  { background: #F4F5F7; }
+  .swatch-color.c5  { background: #FF6B6B; }
+  .swatch-color.c6  { background: #FFD166; }
+  .swatch-info {
+    background: var(--surface2);
+    padding: 10px 12px;
+  }
+  .swatch-name {
+    font-size: 11px; font-weight: 600;
+    color: var(--white); margin-bottom: 2px;
+  }
+  .swatch-hex {
+    font-size: 10px; color: var(--muted);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.05em;
+  }
+  .swatch-role {
+    font-size: 9px; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-top: 3px; font-weight: 600;
+  }
+
+  /* ══════════════════════════════
+     03 — TYPOGRAPHY
+  ══════════════════════════════ */
+  .type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .type-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px 32px;
+  }
+  .type-tag {
+    display: inline-block;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(74,168,255,0.25);
+    background: var(--accent-dim);
+    padding: 4px 10px; border-radius: 100px;
+    margin-bottom: 20px;
+  }
+  .type-specimen-display {
+    font-family: var(--font-display);
+    font-size: 52px; font-weight: 800;
+    letter-spacing: -2px; line-height: 1;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .type-specimen-body {
+    font-family: var(--font-body);
+    font-size: 18px; font-weight: 300;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .type-meta { font-size: 11px; color: var(--muted); }
+  .type-meta strong { color: var(--white); font-weight: 500; }
+
+  .type-scale-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px 32px;
+    grid-column: 1 / -1;
+  }
+  .type-scale-row {
+    display: flex; align-items: baseline; gap: 24px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .type-scale-row:last-child { border-bottom: none; }
+  .ts-label {
+    font-size: 10px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    min-width: 72px; font-weight: 500;
+  }
+  .ts-size { color: var(--muted); font-size: 10px; min-width: 60px; }
+
+  /* ══════════════════════════════
+     04 — VOICE & TONE
+  ══════════════════════════════ */
+  .voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .voice-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .voice-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+  }
+  .voice-icon {
+    font-size: 26px; margin-bottom: 14px; display: block;
+  }
+  .voice-title {
+    font-family: var(--font-display);
+    font-size: 17px; font-weight: 700;
+    color: var(--white); margin-bottom: 8px;
+  }
+  .voice-desc {
+    font-size: 13px; color: var(--muted);
+    line-height: 1.6; font-weight: 300;
+  }
+  .voice-ex {
+    margin-top: 16px;
+    background: var(--surface2);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 12px; color: var(--white);
+    font-style: italic;
+    border-left: 2px solid var(--accent);
+    line-height: 1.5;
+  }
+
+  /* do / don't */
+  .dondont-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+  .dd-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px 24px;
+  }
+  .dd-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 20px;
+  }
+  .dd-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+  .dd-dot.do   { background: var(--accent); }
+  .dd-dot.dont { background: var(--danger); }
+  .dd-title {
+    font-family: var(--font-display);
+    font-size: 15px; font-weight: 700; color: var(--white);
+  }
+  .dd-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-bottom: 12px; font-size: 13px; color: var(--muted); line-height: 1.5;
+  }
+  .dd-item .bullet { flex-shrink: 0; font-size: 14px; margin-top: 1px; }
+
+  /* ══════════════════════════════
+     05 — UI COMPONENTS PREVIEW
+  ══════════════════════════════ */
+  .ui-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .ui-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+  }
+  .ui-inner-label {
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--muted);
+    font-weight: 600; margin-bottom: 24px;
+  }
+
+  /* Buttons */
+  .btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .btn {
+    font-family: var(--font-body);
+    font-size: 13px; font-weight: 500;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer; border: none;
+    letter-spacing: 0.01em;
+    transition: all 0.15s;
+  }
+  .btn-primary { background: var(--accent); color: #0C0D10; }
+  .btn-primary:hover { background: var(--accent2); }
+  .btn-secondary {
+    background: transparent; color: var(--white);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .btn-ghost { background: transparent; color: var(--accent); }
+  .btn-sm { padding: 7px 14px; font-size: 12px; }
+  .btn-icon {
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+
+  /* Input */
+  .input-demo {
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .input-wrap { position: relative; }
+  .input-field {
+    width: 100%; background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px; padding: 11px 14px;
+    color: var(--white); font-family: var(--font-body);
+    font-size: 13px; outline: none;
+    transition: border-color 0.15s;
+  }
+  .input-field:focus { border-color: var(--accent); }
+  .input-label {
+    font-size: 11px; color: var(--muted);
+    font-weight: 500; margin-bottom: 6px;
+    letter-spacing: 0.04em;
+  }
+
+  /* Card component */
+  .app-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 20px;
+  }
+  .app-card-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 16px;
+  }
+  .app-card-title {
+    font-family: var(--font-display);
+    font-size: 14px; font-weight: 700; color: var(--white);
+  }
+  .status-pill {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--accent-dim); color: var(--accent);
+    padding: 4px 10px; border-radius: 100px;
+    border: 1px solid rgba(74,168,255,0.2);
+  }
+  .app-card-stat {
+    display: flex; justify-content: space-between;
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+    font-size: 12px;
+  }
+  .app-card-stat:last-child { border-bottom: none; }
+  .stat-key { color: var(--muted); }
+  .stat-val { color: var(--white); font-weight: 500; }
+  .stat-val.up { color: var(--accent); }
+  .stat-val.down { color: var(--danger); }
+
+  /* Nav bar mockup */
+  .nav-demo {
+    background: rgba(19,21,26,0.9);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 14px 20px;
+    display: flex; align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 16px; font-weight: 800;
+    color: var(--white); letter-spacing: -0.5px;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-link { font-size: 12px; color: var(--muted); cursor: pointer; }
+  .nav-link.active { color: var(--white); font-weight: 500; }
+  .nav-cta { background: var(--accent); color: #0C0D10; font-size: 12px; font-weight: 600; padding: 8px 16px; border-radius: 8px; cursor: pointer; border: none; font-family: var(--font-body); }
+
+  /* ══════════════════════════════
+     06 — MOTION PRINCIPLES
+  ══════════════════════════════ */
+  .motion-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .motion-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .motion-demo {
+    height: 70px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+  }
+  .motion-box {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: var(--accent);
+  }
+  .motion-box.ease-out { animation: easeOut 1.8s cubic-bezier(0.16,1,0.3,1) infinite alternate; }
+  .motion-box.fade     { animation: fadeInOut 2s ease-in-out infinite; }
+  .motion-box.scale    { animation: scaleUp 1.5s cubic-bezier(0.34,1.56,0.64,1) infinite alternate; }
+  @keyframes easeOut  { from { transform: translateX(-28px); } to { transform: translateX(28px); } }
+  @keyframes fadeInOut { 0%,100% { opacity: 0.15; } 50% { opacity: 1; } }
+  @keyframes scaleUp  { from { transform: scale(0.7); } to { transform: scale(1); } }
+  .motion-name {
+    font-family: var(--font-display);
+    font-size: 14px; font-weight: 700; color: var(--white);
+    margin-bottom: 6px;
+  }
+  .motion-val { font-size: 11px; color: var(--accent); font-family: 'Courier New', monospace; margin-bottom: 8px; }
+  .motion-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* ══════════════════════════════
+     07 — BRAND KEYWORDS
+  ══════════════════════════════ */
+  .keywords-wrap { display: flex; flex-wrap: wrap; gap: 10px; }
+  .kw {
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 13px; font-weight: 500;
+  }
+  .kw.primary { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(74,168,255,0.2); }
+  .kw.secondary { background: var(--surface); color: var(--white); border: 1px solid var(--border); }
+  .kw.muted { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+
+  /* ══════════════════════════════
+     FOOTER
+  ══════════════════════════════ */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding-top: 32px;
+    display: flex; align-items: center;
+    justify-content: space-between;
+    color: var(--muted); font-size: 12px;
+  }
+  .footer strong { color: var(--accent); }
+
+  /* Accent glow effects */
+  .glow-accent {
+    position: absolute;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(74,168,255,0.08) 0%, transparent 70%);
+    pointer-events: none; border-radius: 50%;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .logo-hero { grid-template-columns: 1fr; }
+    .palette-grid { grid-template-columns: repeat(4, 1fr); }
+    .type-grid { grid-template-columns: 1fr; }
+    .voice-grid, .motion-grid { grid-template-columns: 1fr; }
+    .ui-grid { grid-template-columns: 1fr; }
+    .dondont-grid { grid-template-columns: 1fr; }
+    .type-specimen-display { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-left">
+      <div style="display:flex;flex-direction:column;">
+        <span style="font-family:'Oxanium',sans-serif;font-weight:800;font-size:22px;letter-spacing:-1px;color:var(--white);display:inline-flex;align-items:center;line-height:1;">
+          ploxo<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-left:2px;margin-bottom:3px;"></span>
+        </span>
+      </div>
+    </div>
+    <span class="header-badge">Brand Mood Board · 2025</span>
+  </header>
+
+  <!-- ══ 01 LOGO ══ -->
+  <section>
+    <div class="sec-label">01 — Identidade Visual</div>
+    <h2 class="sec-title">Logo & Variações</h2>
+    <p class="sec-sub">Lettering em caixa baixa com ponto de acento azul — acessível, moderno e direto. A tipografia Oxanium confere personalidade tech sem abrir mão da leveza.</p>
+
+    <div class="logo-hero">
+      <!-- Dark -->
+      <div class="logo-variant dark">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <span class="lettering-b on-dark">ploxo<span class="dot"></span></span>
+          <span class="lettering-underline" style="width:100%;background:linear-gradient(90deg,var(--accent),transparent);"></span>
+        </div>
+        <span class="logo-var-label lv-label-dark">Versão Principal</span>
+      </div>
+
+      <!-- Light -->
+      <div class="logo-variant light">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <span class="lettering-b on-light">ploxo<span class="dot" style="background:var(--accent2);"></span></span>
+          <span class="lettering-underline" style="width:100%;background:linear-gradient(90deg,var(--accent2),transparent);"></span>
+        </div>
+        <span class="logo-var-label lv-label-light">Versão Fundo Claro</span>
+      </div>
+
+      <!-- Accent -->
+      <div class="logo-variant green">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <span class="lettering-b on-accent">ploxo<span class="dot"></span></span>
+          <span class="lettering-underline" style="width:100%;background:linear-gradient(90deg,rgba(0,0,0,0.25),transparent);"></span>
+        </div>
+        <span class="logo-var-label lv-label-green">Versão Accent</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 02 CORES ══ -->
+  <section>
+    <div class="sec-label">02 — Paleta de Cores</div>
+    <h2 class="sec-title">Color System</h2>
+    <p class="sec-sub">Dark-first com um único acento vibrante. O verde-neon ancora toda a hierarquia visual sem sobrecarregar.</p>
+
+    <div class="palette-grid">
+      <div class="swatch">
+        <div class="swatch-color primary"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Ploxo Blue</div>
+          <div class="swatch-hex">#4AA8FF</div>
+          <div class="swatch-role">Primary Accent</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color c1"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Void</div>
+          <div class="swatch-hex">#0C0D10</div>
+          <div class="swatch-role">Background</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color c2"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Obsidian</div>
+          <div class="swatch-hex">#13151A</div>
+          <div class="swatch-role">Surface</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color c3"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Slate</div>
+          <div class="swatch-hex">#1A1D24</div>
+          <div class="swatch-role">Surface 2</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color c4"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Frost</div>
+          <div class="swatch-hex">#F4F5F7</div>
+          <div class="swatch-role">Text / Light BG</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color c5"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Alert Red</div>
+          <div class="swatch-hex">#FF6B6B</div>
+          <div class="swatch-role">Error / Danger</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color c6"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Amber</div>
+          <div class="swatch-hex">#FFD166</div>
+          <div class="swatch-role">Warning</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 03 TIPOGRAFIA ══ -->
+  <section>
+    <div class="sec-label">03 — Tipografia</div>
+    <h2 class="sec-title">Type System</h2>
+    <p class="sec-sub">Syne para headlines — geométrica, de personalidade forte. DM Sans para corpo — leve e extremamente legível.</p>
+
+    <div class="type-grid">
+      <div class="type-card">
+        <span class="type-tag">Display · Syne</span>
+        <div class="type-specimen-display">Simplifique.<br>Faça mais.</div>
+        <div class="type-meta">
+          <strong>Syne</strong> — Geométrica, moderna, autoridade.<br>
+          Pesos: 400 · 600 · 700 · <strong>800</strong>
+        </div>
+      </div>
+      <div class="type-card">
+        <span class="type-tag">Body · DM Sans</span>
+        <div class="type-specimen-body">A Ploxo conecta tudo o que você precisa no dia a dia em um único ecossistema. Menos apps, mais resultado.</div>
+        <div class="type-meta">
+          <strong>DM Sans</strong> — Humanista, acessível, limpa.<br>
+          Pesos: <strong>300</strong> · 400 · <strong>500</strong>
+        </div>
+      </div>
+      <div class="type-scale-card">
+        <span class="type-tag">Escala tipográfica</span>
+        <div class="type-scale-row">
+          <span class="ts-label">Display</span>
+          <span style="font-family:var(--font-display);font-size:48px;font-weight:800;letter-spacing:-2px;color:var(--white);line-height:1">Ploxo</span>
+          <span class="ts-size">48px · Syne 800</span>
+        </div>
+        <div class="type-scale-row">
+          <span class="ts-label">H1</span>
+          <span style="font-family:var(--font-display);font-size:32px;font-weight:700;letter-spacing:-1px;color:var(--white)">Seu ecossistema</span>
+          <span class="ts-size">32px · Syne 700</span>
+        </div>
+        <div class="type-scale-row">
+          <span class="ts-label">H2</span>
+          <span style="font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--white)">Apps que facilitam</span>
+          <span class="ts-size">22px · Syne 600</span>
+        </div>
+        <div class="type-scale-row">
+          <span class="ts-label">Body</span>
+          <span style="font-family:var(--font-body);font-size:15px;font-weight:400;color:var(--muted)">Organize sua vida real com apps que conversam entre si.</span>
+          <span class="ts-size">15px · DM Sans 400</span>
+        </div>
+        <div class="type-scale-row">
+          <span class="ts-label">Caption</span>
+          <span style="font-family:var(--font-body);font-size:11px;font-weight:500;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase">Última sincronização · Agora</span>
+          <span class="ts-size">11px · DM Sans 500</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 04 VOZ ══ -->
+  <section>
+    <div class="sec-label">04 — Voz & Tom</div>
+    <h2 class="sec-title">Brand Voice</h2>
+    <p class="sec-sub">A Ploxo fala como um profissional confiante — direto, sem rodeios, sempre útil.</p>
+
+    <div class="voice-grid">
+      <div class="voice-card">
+        <span class="voice-icon">⚡</span>
+        <div class="voice-title">Direto ao Ponto</div>
+        <div class="voice-desc">Sem floreios, sem jargão vazio. Comunica valor imediatamente. Cada palavra tem função.</div>
+        <div class="voice-ex">"Conecte seus apps. Ganhe tempo." — não "Experimente nossa solução inovadora de produtividade."</div>
+      </div>
+      <div class="voice-card">
+        <span class="voice-icon">🤝</span>
+        <div class="voice-title">Humano & Próximo</div>
+        <div class="voice-desc">Fala com profissionais, não para eles. Tom conversacional sem perder autoridade.</div>
+        <div class="voice-ex">"Você já tem o suficiente pra resolver — a gente só coloca tudo no lugar certo."</div>
+      </div>
+      <div class="voice-card">
+        <span class="voice-icon">🔩</span>
+        <div class="voice-title">Prático & Confiável</div>
+        <div class="voice-desc">Promessas claras e alcançáveis. Foca em resultado real, não em hype. A confiança vem do que entrega.</div>
+        <div class="voice-ex">"3 minutos pra configurar. Funciona no primeiro uso."</div>
+      </div>
+    </div>
+
+    <div class="dondont-grid">
+      <div class="dd-card">
+        <div class="dd-header">
+          <div class="dd-dot do"></div>
+          <span class="dd-title">Use na comunicação</span>
+        </div>
+        <div class="dd-item"><span class="bullet" style="color:var(--accent)">✓</span> Verbos de ação: organize, conecte, resolva</div>
+        <div class="dd-item"><span class="bullet" style="color:var(--accent)">✓</span> Frases curtas e afirmativas</div>
+        <div class="dd-item"><span class="bullet" style="color:var(--accent)">✓</span> Benefício concreto antes de feature</div>
+        <div class="dd-item"><span class="bullet" style="color:var(--accent)">✓</span> Dados quando disponíveis ("economize 40 min/dia")</div>
+        <div class="dd-item"><span class="bullet" style="color:var(--accent)">✓</span> Segunda pessoa: "você", "seu"</div>
+      </div>
+      <div class="dd-card">
+        <div class="dd-header">
+          <div class="dd-dot dont"></div>
+          <span class="dd-title">Evite</span>
+        </div>
+        <div class="dd-item"><span class="bullet" style="color:var(--danger)">✗</span> "Revolucionário", "disruptivo", "game-changer"</div>
+        <div class="dd-item"><span class="bullet" style="color:var(--danger)">✗</span> Jargão técnico sem contexto</div>
+        <div class="dd-item"><span class="bullet" style="color:var(--danger)">✗</span> Promessas vagas ("tudo que você precisa")</div>
+        <div class="dd-item"><span class="bullet" style="color:var(--danger)">✗</span> Tom corporativo e distante</div>
+        <div class="dd-item"><span class="bullet" style="color:var(--danger)">✗</span> Excesso de exclamações!!!!</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 05 UI ══ -->
+  <section>
+    <div class="sec-label">05 — Componentes UI</div>
+    <h2 class="sec-title">Design Tokens em Uso</h2>
+    <p class="sec-sub">Aplicação real da identidade nos componentes de interface dos apps do ecossistema.</p>
+
+    <div style="margin-bottom:16px">
+      <div class="nav-demo">
+        <span class="nav-logo">Ploxo<span>.</span></span>
+        <div class="nav-links">
+          <span class="nav-link active">Dashboard</span>
+          <span class="nav-link">Apps</span>
+          <span class="nav-link">Configurações</span>
+        </div>
+        <button class="nav-cta">+ Novo App</button>
+      </div>
+    </div>
+
+    <div class="ui-grid">
+      <div class="ui-card">
+        <div class="ui-inner-label">Botões</div>
+        <div class="btn-row" style="margin-bottom:14px">
+          <button class="btn btn-primary btn-icon">⚡ Conectar App</button>
+          <button class="btn btn-secondary">Saiba mais</button>
+          <button class="btn btn-ghost">Cancelar</button>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary btn-sm">Salvar</button>
+          <button class="btn btn-secondary btn-sm">Editar</button>
+          <button class="btn btn-secondary btn-sm" style="opacity:0.4;cursor:not-allowed">Desativado</button>
+        </div>
+      </div>
+
+      <div class="ui-card">
+        <div class="ui-inner-label">Inputs</div>
+        <div class="input-demo">
+          <div>
+            <div class="input-label">E-mail profissional</div>
+            <input class="input-field" placeholder="voce@empresa.com" style="background:#1A1D24">
+          </div>
+          <div>
+            <div class="input-label">Nome do workspace</div>
+            <input class="input-field" value="Minha Empresa" style="border-color:var(--accent);background:#1A1D24">
+          </div>
+        </div>
+      </div>
+
+      <div class="ui-card" style="grid-column: 1 / -1">
+        <div class="ui-inner-label">App Card — Componente típico do ecossistema</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+          <div class="app-card">
+            <div class="app-card-header">
+              <span class="app-card-title">📅 Ploxo Cal</span>
+              <span class="status-pill">Ativo</span>
+            </div>
+            <div class="app-card-stat"><span class="stat-key">Reuniões hoje</span><span class="stat-val">4</span></div>
+            <div class="app-card-stat"><span class="stat-key">Tempo livre</span><span class="stat-val up">+2h</span></div>
+            <div class="app-card-stat"><span class="stat-key">Conflitos</span><span class="stat-val">0</span></div>
+          </div>
+          <div class="app-card">
+            <div class="app-card-header">
+              <span class="app-card-title">📋 Ploxo Tasks</span>
+              <span class="status-pill">Ativo</span>
+            </div>
+            <div class="app-card-stat"><span class="stat-key">Tarefas abertas</span><span class="stat-val">12</span></div>
+            <div class="app-card-stat"><span class="stat-key">Concluídas hoje</span><span class="stat-val up">7</span></div>
+            <div class="app-card-stat"><span class="stat-key">Atrasadas</span><span class="stat-val down">2</span></div>
+          </div>
+          <div class="app-card">
+            <div class="app-card-header">
+              <span class="app-card-title">💸 Ploxo Pay</span>
+              <span class="status-pill">Ativo</span>
+            </div>
+            <div class="app-card-stat"><span class="stat-key">Saldo</span><span class="stat-val">R$ 4.820</span></div>
+            <div class="app-card-stat"><span class="stat-key">Gastos/mês</span><span class="stat-val down">R$ 1.230</span></div>
+            <div class="app-card-stat"><span class="stat-key">Economia</span><span class="stat-val up">+18%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 06 MOTION ══ -->
+  <section>
+    <div class="sec-label">06 — Motion Design</div>
+    <h2 class="sec-title">Princípios de Animação</h2>
+    <p class="sec-sub">Movimento sempre com propósito. Rápido, suave, sem exagero — respeita o tempo do profissional.</p>
+
+    <div class="motion-grid">
+      <div class="motion-card">
+        <div class="motion-demo">
+          <div class="motion-box ease-out"></div>
+        </div>
+        <div class="motion-name">Ease Out</div>
+        <div class="motion-val">cubic-bezier(0.16, 1, 0.3, 1)</div>
+        <div class="motion-desc">Curva padrão para entradas. Começa rápido, desacelera com suavidade. Sensação de resposta imediata.</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-demo">
+          <div class="motion-box fade"></div>
+        </div>
+        <div class="motion-name">Fade</div>
+        <div class="motion-val">200ms ease-in-out</div>
+        <div class="motion-desc">Para conteúdo que aparece/desaparece. Discreto. Nunca interrompe o fluxo do usuário.</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-demo">
+          <div class="motion-box scale"></div>
+        </div>
+        <div class="motion-name">Spring Scale</div>
+        <div class="motion-val">cubic-bezier(0.34, 1.56, 0.64, 1)</div>
+        <div class="motion-desc">Para elementos de destaque e confirmações. O leve overshooting dá vida sem ser exagerado.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 07 KEYWORDS ══ -->
+  <section>
+    <div class="sec-label">07 — Essência da Marca</div>
+    <h2 class="sec-title">Brand Keywords</h2>
+    <p class="sec-sub">As palavras que guiam toda decisão de design, produto e comunicação.</p>
+
+    <div class="keywords-wrap">
+      <span class="kw primary">Confiável</span>
+      <span class="kw primary">Prático</span>
+      <span class="kw primary">Acessível</span>
+      <span class="kw secondary">Ecossistema</span>
+      <span class="kw secondary">Integração</span>
+      <span class="kw secondary">Escalável</span>
+      <span class="kw secondary">Simples</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span><strong>Ploxo</strong> Brand Identity · Versão 1.0</span>
+    <span>Uso interno — Compartilhe com o time</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
