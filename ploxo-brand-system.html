@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ploxo — Brand Architecture System</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #0C0D10;
+    --surface:  #13151A;
+    --surface2: #1A1D24;
+    --border:   rgba(255,255,255,0.07);
+    --white:    #F4F5F7;
+    --muted:    #6B7280;
+
+    /* Ecosystem — Master brand */
+    --ploxo:       #4AA8FF;
+    --ploxo-dim:   rgba(74,168,255,0.12);
+    --ploxo-glow:  rgba(74,168,255,0.25);
+
+    /* Sub-brands */
+    --reforma:     #FF7B4A;
+    --reforma-dim: rgba(255,123,74,0.12);
+    --reforma-glow:rgba(255,123,74,0.25);
+
+    --finance:     #B8BEC8;
+    --finance-dim: rgba(184,190,200,0.12);
+    --finance-glow:rgba(184,190,200,0.25);
+
+    --fitness:     #76D3C4;
+    --fitness-dim: rgba(118,211,196,0.12);
+    --fitness-glow:rgba(118,211,196,0.25);
+
+    --font-display: 'Syne', sans-serif;
+    --font-body:    'DM Sans', sans-serif;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.022; pointer-events: none; z-index: 9999;
+  }
+
+  .page { max-width: 1200px; margin: 0 auto; padding: 60px 32px 100px; }
+
+  /* HEADER */
+  .header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 80px; padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .header-logo {
+    font-family: var(--font-display);
+    font-size: 22px; font-weight: 800; letter-spacing: -0.5px;
+  }
+  .header-logo span { color: var(--ploxo); }
+  .header-badge {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted);
+    border: 1px solid var(--border); padding: 6px 14px; border-radius: 100px;
+  }
+
+  /* SECTION */
+  .sec-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ploxo);
+    margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+  }
+  .sec-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+  .sec-title {
+    font-family: var(--font-display);
+    font-size: 30px; font-weight: 800; letter-spacing: -1px;
+    color: var(--white); line-height: 1.1; margin-bottom: 8px;
+  }
+  .sec-sub { color: var(--muted); font-size: 14px; margin-bottom: 40px; font-weight: 300; }
+  section { margin-bottom: 88px; }
+
+  /* ══════════════════════════════
+     MASTER BRAND
+  ══════════════════════════════ */
+  .master-card {
+    background: var(--surface);
+    border: 1px solid rgba(74,168,255,0.2);
+    border-radius: 28px; padding: 56px 48px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 48px; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .master-card::before {
+    content: '';
+    position: absolute; top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, var(--ploxo-glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .master-logo-display {
+    display: flex; flex-direction: column; gap: 32px;
+  }
+  .master-symbol {
+    display: flex; align-items: center; gap: 20px;
+  }
+
+  /* P monogram large */
+  .p-mono {
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 20px;
+  }
+  .p-mono.lg { width: 72px; height: 72px; }
+  .p-mono.md { width: 52px; height: 52px; }
+  .p-mono.sm { width: 36px; height: 36px; }
+
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 800; letter-spacing: -1px;
+    color: var(--white);
+  }
+  .wordmark.xl { font-size: 52px; }
+  .wordmark.lg { font-size: 36px; }
+  .wordmark.md { font-size: 24px; }
+
+  .master-info { }
+  .master-info h3 {
+    font-family: var(--font-display);
+    font-size: 20px; font-weight: 700; margin-bottom: 12px;
+  }
+  .master-info p { color: var(--muted); font-size: 13px; line-height: 1.7; font-weight: 300; margin-bottom: 20px; }
+  .color-chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--surface2); border: 1px solid var(--border);
+    padding: 8px 14px; border-radius: 10px; font-size: 12px;
+  }
+  .chip-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .chip-hex { color: var(--muted); font-family: monospace; }
+
+  /* ══════════════════════════════
+     SUB-BRAND GRID
+  ══════════════════════════════ */
+  .subbrand-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .subbrand-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px; overflow: hidden;
+    position: relative;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .subbrand-card:hover { transform: translateY(-3px); }
+  .subbrand-card.reforma  { --brand: var(--reforma);  --brand-dim: var(--reforma-dim);  --brand-glow: var(--reforma-glow); }
+  .subbrand-card.finance  { --brand: var(--finance);  --brand-dim: var(--finance-dim);  --brand-glow: var(--finance-glow); }
+  .subbrand-card.fitness  { --brand: var(--fitness);  --brand-dim: var(--fitness-dim);  --brand-glow: var(--fitness-glow); }
+  .subbrand-card:hover { border-color: var(--brand); }
+
+  .subbrand-top-bar {
+    height: 3px;
+    background: var(--brand);
+  }
+
+  .subbrand-stage {
+    padding: 40px 32px 32px;
+    display: flex; flex-direction: column; gap: 28px;
+    position: relative; overflow: hidden;
+  }
+  .subbrand-stage::before {
+    content: '';
+    position: absolute; top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, var(--brand-glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Combined logo: P + icon */
+  .combined-logo {
+    display: flex; align-items: center; gap: 0;
+  }
+  .logo-p-block {
+    width: 56px; height: 56px;
+    background: var(--surface2);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px 0 0 14px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .logo-divider {
+    width: 1px; height: 56px;
+    background: rgba(255,255,255,0.08);
+    flex-shrink: 0;
+  }
+  .logo-icon-block {
+    width: 56px; height: 56px;
+    border-radius: 0 14px 14px 0;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    background: var(--brand-dim);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-left: none;
+  }
+
+  /* On-dark variant */
+  .combined-logo.on-dark .logo-p-block { background: rgba(255,255,255,0.04); }
+
+  /* Stacked version */
+  .stacked-logo {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .stack-icons {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .stack-p {
+    width: 28px; height: 14px;
+    background: var(--surface2);
+    border-radius: 5px 5px 0 0;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .stack-icon {
+    width: 28px; height: 14px;
+    border-radius: 0 0 5px 5px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--brand-dim);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-top: none;
+  }
+
+  .subbrand-name {
+    font-family: var(--font-display);
+    font-size: 22px; font-weight: 800; letter-spacing: -0.5px;
+  }
+
+  .subbrand-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  /* Variants row */
+  .variants-row {
+    display: flex; gap: 12px; flex-wrap: wrap; padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .variant-chip {
+    display: flex; align-items: center; justify-content: center;
+    gap: 6px; padding: 8px 14px;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 10px; font-size: 11px; color: var(--muted);
+  }
+  .variant-chip span { color: var(--white); font-weight: 500; }
+
+  /* Color chip subbrand */
+  .brand-color-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 16px;
+    background: var(--surface2); border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+  .brand-swatch {
+    width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+  }
+  .brand-color-info {}
+  .brand-color-name { font-size: 12px; font-weight: 600; color: var(--white); }
+  .brand-color-hex { font-size: 10px; color: var(--muted); font-family: monospace; }
+
+  /* ══════════════════════════════
+     ECOSYSTEM MAP
+  ══════════════════════════════ */
+  .ecosystem-map {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 28px; padding: 48px;
+    position: relative; overflow: hidden;
+  }
+  .eco-center {
+    display: flex; flex-direction: column;
+    align-items: center; margin-bottom: 40px;
+  }
+  .eco-master-badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--ploxo-dim);
+    border: 1px solid rgba(74,168,255,0.2);
+    padding: 12px 24px; border-radius: 100px;
+    font-family: var(--font-display);
+    font-size: 18px; font-weight: 800; color: var(--white);
+    margin-bottom: 8px;
+  }
+  .eco-master-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ploxo); }
+  .eco-tagline { font-size: 12px; color: var(--muted); }
+
+  /* Connection line */
+  .eco-connector {
+    width: 1px; height: 32px; background: var(--border);
+    margin: 0 auto;
+  }
+
+  .eco-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; position: relative;
+  }
+  .eco-grid::before {
+    content: '';
+    position: absolute; top: -32px; left: 16.66%; right: 16.66%;
+    height: 1px; background: var(--border);
+  }
+
+  .eco-sub {
+    border-radius: 16px; padding: 20px;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .eco-sub::before {
+    content: '';
+    position: absolute; top: -1px; left: 0; right: 0;
+    height: 2px; border-radius: 2px 2px 0 0;
+    background: var(--brand);
+  }
+  .eco-sub.reforma { --brand: var(--reforma); }
+  .eco-sub.finance { --brand: var(--finance); }
+  .eco-sub.fitness { --brand: var(--fitness); }
+
+  .eco-sub-header {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+  }
+  .eco-sub-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--brand-dim);
+    font-size: 14px; flex-shrink: 0;
+  }
+  .eco-sub.reforma .eco-sub-icon { background: var(--reforma-dim); }
+  .eco-sub.finance .eco-sub-icon { background: var(--finance-dim); }
+  .eco-sub.fitness .eco-sub-icon { background: var(--fitness-dim); }
+
+  .eco-sub-name {
+    font-family: var(--font-display);
+    font-size: 14px; font-weight: 700;
+  }
+  .eco-sub-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+  /* ══════════════════════════════
+     COLOR SYSTEM
+  ══════════════════════════════ */
+  .color-system-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  }
+  .cs-card {
+    border-radius: 20px; overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .cs-swatch { height: 120px; position: relative; }
+  .cs-swatch.master  { background: var(--ploxo); box-shadow: inset 0 -20px 40px rgba(0,0,0,0.2); }
+  .cs-swatch.reforma { background: var(--reforma); box-shadow: inset 0 -20px 40px rgba(0,0,0,0.2); }
+  .cs-swatch.finance { background: var(--finance); box-shadow: inset 0 -20px 40px rgba(0,0,0,0.2); }
+  .cs-swatch.fitness { background: var(--fitness); box-shadow: inset 0 -20px 40px rgba(0,0,0,0.2); }
+  .cs-label {
+    position: absolute; bottom: 12px; left: 14px;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(0,0,0,0.5);
+  }
+  .cs-info { background: var(--surface); padding: 14px 16px; }
+  .cs-name { font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+  .cs-hex { font-size: 11px; color: var(--muted); font-family: monospace; margin-bottom: 4px; }
+  .cs-usage { font-size: 10px; color: var(--muted); line-height: 1.4; }
+
+  /* ══════════════════════════════
+     USAGE RULES
+  ══════════════════════════════ */
+  .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .rule-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 20px; padding: 28px 24px;
+  }
+  .rule-title {
+    font-family: var(--font-display);
+    font-size: 15px; font-weight: 700; color: var(--white);
+    margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+  }
+  .rule-item {
+    display: flex; gap: 10px; margin-bottom: 12px;
+    font-size: 13px; color: var(--muted); line-height: 1.5;
+  }
+  .rule-bullet { flex-shrink: 0; margin-top: 1px; }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid var(--border); padding-top: 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    color: var(--muted); font-size: 12px;
+  }
+  .footer strong { color: var(--ploxo); }
+
+  @media (max-width: 768px) {
+    .master-card { grid-template-columns: 1fr; }
+    .subbrand-grid { grid-template-columns: 1fr; }
+    .eco-grid { grid-template-columns: 1fr; }
+    .color-system-grid { grid-template-columns: repeat(2,1fr); }
+    .rules-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-left">
+      <svg width="32" height="32" viewBox="0 0 48 48" fill="none">
+        <rect x="12" y="8" width="6" height="32" rx="3" fill="#4AA8FF"/>
+        <rect x="12" y="8" width="16" height="6" rx="3" fill="#4AA8FF"/>
+        <rect x="24" y="8" width="6" height="6" fill="#4AA8FF"/>
+        <rect x="26" y="13" width="5" height="12" rx="2.5" fill="#4AA8FF" opacity="0.85"/>
+        <rect x="12" y="22" width="16" height="5" rx="2.5" fill="#4AA8FF" opacity="0.7"/>
+        <circle cx="36" cy="38" r="4" fill="#4AA8FF" opacity="0.5"/>
+      </svg>
+      <span class="header-logo">Ploxo<span>.</span></span>
+    </div>
+    <span class="header-badge">Brand Architecture · 2025</span>
+  </header>
+
+  <!-- VERSION BANNER -->
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:#0D0E12;border:1px solid rgba(74,168,255,0.15);border-radius:14px;margin-bottom:48px;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div style="width:7px;height:7px;border-radius:50%;background:#4AA8FF;box-shadow:0 0 8px rgba(74,168,255,0.6);flex-shrink:0"></div>
+      <span style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#F4F5F7;">Versão <strong>1.1</strong></span>
+      <span style="width:1px;height:14px;background:rgba(255,255,255,0.1);display:inline-block;"></span>
+      <span style="font-family:'DM Sans',sans-serif;font-size:12px;color:#6B7280;font-weight:300;">Atualizado em 11 Mar 2026</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <span style="font-family:'DM Sans',sans-serif;font-size:11px;color:#6B7280;font-weight:300;">Changelog</span>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;">
+        <span style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;background:rgba(255,123,74,0.1);border:1px solid rgba(255,123,74,0.2);color:#FF7B4A;padding:3px 9px;border-radius:100px;">Ícones aprovados</span>
+        <span style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;background:rgba(74,168,255,0.1);border:1px solid rgba(74,168,255,0.2);color:#4AA8FF;padding:3px 9px;border-radius:100px;">CSS Tokens</span>
+        <span style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;background:rgba(74,168,255,0.1);border:1px solid rgba(74,168,255,0.2);color:#4AA8FF;padding:3px 9px;border-radius:100px;">Componentes</span>
+        <span style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;background:rgba(184,190,200,0.1);border:1px solid rgba(184,190,200,0.2);color:#B8BEC8;padding:3px 9px;border-radius:100px;">Fitness #76D3C4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 01 MASTER BRAND ══ -->
+  <section>
+    <div class="sec-label">01 — Marca Mãe</div>
+    <h2 class="sec-title">Ploxo Ecossistema</h2>
+    <p class="sec-sub">A marca principal que ancora todo o sistema. Azul é a cor do ecossistema — presente em todos os subgrupos.</p>
+
+    <div class="master-card">
+      <div class="master-logo-display">
+        <!-- Full logo with P mono -->
+        <div class="master-symbol">
+          <div class="p-mono lg" style="background:var(--surface2);border:1px solid rgba(74,168,255,0.2);box-shadow:0 0 24px var(--ploxo-glow);">
+            <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+              <rect x="12" y="8" width="6" height="32" rx="3" fill="#4AA8FF"/>
+              <rect x="12" y="8" width="16" height="6" rx="3" fill="#4AA8FF"/>
+              <rect x="24" y="8" width="6" height="6" fill="#4AA8FF"/>
+              <rect x="26" y="13" width="5" height="12" rx="2.5" fill="#4AA8FF" opacity="0.85"/>
+              <rect x="12" y="22" width="16" height="5" rx="2.5" fill="#4AA8FF" opacity="0.7"/>
+              <circle cx="36" cy="38" r="4" fill="#4AA8FF" opacity="0.5"/>
+            </svg>
+          </div>
+          <span class="wordmark xl">Ploxo<span style="color:var(--ploxo)">.</span></span>
+        </div>
+
+        <!-- Light background variant -->
+        <div style="background:#F4F5F7;border-radius:16px;padding:20px 24px;display:flex;align-items:center;gap:16px;">
+          <div style="width:44px;height:44px;border-radius:12px;background:#0C0D10;display:flex;align-items:center;justify-content:center;">
+            <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+              <rect x="12" y="8" width="6" height="32" rx="3" fill="#4AA8FF"/>
+              <rect x="12" y="8" width="16" height="6" rx="3" fill="#4AA8FF"/>
+              <rect x="24" y="8" width="6" height="6" fill="#4AA8FF"/>
+              <rect x="26" y="13" width="5" height="12" rx="2.5" fill="#4AA8FF" opacity="0.85"/>
+              <rect x="12" y="22" width="16" height="5" rx="2.5" fill="#4AA8FF" opacity="0.7"/>
+              <circle cx="36" cy="38" r="4" fill="#4AA8FF" opacity="0.5"/>
+            </svg>
+          </div>
+          <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:28px;letter-spacing:-1px;color:#0C0D10;">Ploxo<span style="color:#2E8FE8">.</span></span>
+        </div>
+      </div>
+
+      <div class="master-info">
+        <h3>A marca raiz</h3>
+        <p>O monograma P em azul é a âncora visual de todo o ecossistema. Toda sub-marca carrega o P como elemento de conexão, garantindo que o usuário sempre reconheça que está dentro do universo Ploxo.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px;">
+          <div class="color-chip">
+            <div class="chip-dot" style="background:#4AA8FF;box-shadow:0 0 8px rgba(74,168,255,0.5)"></div>
+            <span>Ploxo Blue</span>
+            <span class="chip-hex">#4AA8FF</span>
+          </div>
+          <div class="color-chip">
+            <div class="chip-dot" style="background:#F4F5F7"></div>
+            <span>Frost</span>
+            <span class="chip-hex">#F4F5F7</span>
+          </div>
+          <div class="color-chip">
+            <div class="chip-dot" style="background:#0C0D10;border:1px solid rgba(255,255,255,0.1)"></div>
+            <span>Void</span>
+            <span class="chip-hex">#0C0D10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 02 SUB-BRANDS ══ -->
+  <section>
+    <div class="sec-label">02 — Sub-marcas</div>
+    <h2 class="sec-title">Logos por Vertical</h2>
+    <p class="sec-sub">Cada vertical combina o P da Ploxo com o ícone da solução. A cor diferencia o segmento mantendo a família visual.</p>
+
+    <div class="subbrand-grid">
+
+      <!-- REFORMA -->
+      <div class="subbrand-card reforma">
+        <div class="subbrand-top-bar"></div>
+        <div class="subbrand-stage">
+
+          <!-- Combined logo: P + house -->
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);font-weight:600;">Logo principal</div>
+            <div class="combined-logo">
+              <div class="logo-p-block">
+                <svg width="28" height="28" viewBox="0 0 48 48" fill="none">
+                  <rect x="12" y="8" width="6" height="32" rx="3" fill="#4AA8FF"/>
+                  <rect x="12" y="8" width="16" height="6" rx="3" fill="#4AA8FF"/>
+                  <rect x="24" y="8" width="6" height="6" fill="#4AA8FF"/>
+                  <rect x="26" y="13" width="5" height="12" rx="2.5" fill="#4AA8FF" opacity="0.85"/>
+                  <rect x="12" y="22" width="16" height="5" rx="2.5" fill="#4AA8FF" opacity="0.7"/>
+                  <circle cx="36" cy="38" r="4" fill="#4AA8FF" opacity="0.5"/>
+                </svg>
+              </div>
+              <div class="logo-divider"></div>
+              <div class="logo-icon-block" style="background:var(--reforma-dim);">
+                <!-- House icon -->
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z" stroke="#FF7B4A" stroke-width="1.5" stroke-linejoin="round"/>
+                  <path d="M9 21V12h6v9" stroke="#FF7B4A" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Icon only variant -->
+            <div style="display:flex;align-items:center;gap:12px;margin-top:4px;">
+              <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);font-weight:600;min-width:80px;">Ícone app</div>
+              <!-- Dark bg: casa grande centro + P pequeno canto sup-dir -->
+              <div style="width:56px;height:56px;border-radius:14px;background:#13151A;border:1px solid rgba(255,123,74,0.2);position:relative;overflow:hidden;box-shadow:0 0 16px var(--reforma-glow);">
+                <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                  <!-- Casa: telhado + corpo + porta (gramática aprovada) -->
+                  <path d="M10 26 L28 12 L46 26" stroke="#FF7B4A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M14 24 L14 44 L42 44 L42 24" stroke="#FF7B4A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="rgba(255,123,74,0.06)"/>
+                  <rect x="22" y="33" width="12" height="11" rx="2" stroke="#FF7B4A" stroke-width="3" fill="rgba(255,123,74,0.1)"/>
+                  <!-- P semicírculo canto sup-dir -->
+                  <g transform="translate(36,4) scale(0.09)">
+                    <rect x="14" y="10" width="16" height="68" rx="8" fill="#FF7B4A" opacity="0.75"/>
+                    <path d="M30 10 L54 10 A24 24 0 0 1 54 58 L30 58 Z" fill="#FF7B4A" opacity="0.75"/>
+                    <path d="M30 22 L50 22 A12 12 0 0 1 50 46 L30 46 Z" fill="#13151A"/>
+                  </g>
+                </svg>
+              </div>
+              <!-- Solid bg -->
+              <div style="width:56px;height:56px;border-radius:14px;background:#FF7B4A;position:relative;overflow:hidden;">
+                <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                  <path d="M10 26 L28 12 L46 26" stroke="rgba(0,0,0,0.5)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M14 24 L14 44 L42 44 L42 24" stroke="rgba(0,0,0,0.5)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="rgba(0,0,0,0.1)"/>
+                  <rect x="22" y="33" width="12" height="11" rx="2" stroke="rgba(0,0,0,0.5)" stroke-width="3"/>
+                  <g transform="translate(36,4) scale(0.09)">
+                    <rect x="14" y="10" width="16" height="68" rx="8" fill="rgba(0,0,0,0.45)"/>
+                    <path d="M30 10 L54 10 A24 24 0 0 1 54 58 L30 58 Z" fill="rgba(0,0,0,0.45)"/>
+                    <path d="M30 22 L50 22 A12 12 0 0 1 50 46 L30 46 Z" fill="#FF7B4A"/>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="subbrand-name" style="color:var(--reforma);">Reforma</div>
+            <div class="subbrand-desc" style="margin-top:6px;">Agendamento de profissionais, orçamentos e acompanhamento de obras.</div>
+          </div>
+
+          <div class="brand-color-row">
+            <div class="brand-swatch" style="background:#FF7B4A;box-shadow:0 0 12px rgba(255,123,74,0.3);"></div>
+            <div class="brand-color-info">
+              <div class="brand-color-name">Reforma Orange</div>
+              <div class="brand-color-hex">#FF7B4A</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FINANÇAS -->
+      <div class="subbrand-card finance">
+        <div class="subbrand-top-bar"></div>
+        <div class="subbrand-stage">
+
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);font-weight:600;">Logo principal</div>
+            <div class="combined-logo">
+              <div class="logo-p-block">
+                <svg width="28" height="28" viewBox="0 0 48 48" fill="none">
+                  <rect x="12" y="8" width="6" height="32" rx="3" fill="#4AA8FF"/>
+                  <rect x="12" y="8" width="16" height="6" rx="3" fill="#4AA8FF"/>
+                  <rect x="24" y="8" width="6" height="6" fill="#4AA8FF"/>
+                  <rect x="26" y="13" width="5" height="12" rx="2.5" fill="#4AA8FF" opacity="0.85"/>
+                  <rect x="12" y="22" width="16" height="5" rx="2.5" fill="#4AA8FF" opacity="0.7"/>
+                  <circle cx="36" cy="38" r="4" fill="#4AA8FF" opacity="0.5"/>
+                </svg>
+              </div>
+              <div class="logo-divider"></div>
+              <div class="logo-icon-block" style="background:var(--finance-dim);">
+                <!-- Finance/coin icon -->
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="9" stroke="#B8BEC8" stroke-width="1.5"/>
+                  <path d="M12 7v1m0 8v1M9.5 9.5C9.5 8.67 10.17 8 11 8h2a1.5 1.5 0 010 3h-2a1.5 1.5 0 000 3h2a1.5 1.5 0 010 3h-2C9.67 17 9 16.33 9 15.5" stroke="#B8BEC8" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:12px;margin-top:4px;">
+              <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);font-weight:600;min-width:80px;">Ícone app</div>
+              <!-- Dark bg: cifrão grande centro + P pequeno canto sup-dir -->
+              <div style="width:56px;height:56px;border-radius:14px;background:#13151A;border:1px solid rgba(184,190,200,0.2);position:relative;overflow:hidden;box-shadow:0 0 16px var(--finance-glow);">
+                <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                  <!-- Carteira: corpo + aba + bolso + moeda -->
+                  <rect x="9" y="17" width="36" height="24" rx="5" stroke="#B8BEC8" stroke-width="3.5" fill="rgba(184,190,200,0.05)"/>
+                  <path d="M9 23 L45 23" stroke="#B8BEC8" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
+                  <rect x="33" y="22" width="12" height="10" rx="3" stroke="#B8BEC8" stroke-width="2.5" fill="rgba(184,190,200,0.08)"/>
+                  <circle cx="39" cy="27" r="2.5" fill="#B8BEC8" opacity="0.7"/>
+                  <!-- P semicírculo canto sup-dir -->
+                  <g transform="translate(36,4) scale(0.09)">
+                    <rect x="14" y="10" width="16" height="68" rx="8" fill="#B8BEC8" opacity="0.75"/>
+                    <path d="M30 10 L54 10 A24 24 0 0 1 54 58 L30 58 Z" fill="#B8BEC8" opacity="0.75"/>
+                    <path d="M30 22 L50 22 A12 12 0 0 1 50 46 L30 46 Z" fill="#13151A"/>
+                  </g>
+                </svg>
+              </div>
+              <!-- Solid bg -->
+              <div style="width:56px;height:56px;border-radius:14px;background:#B8BEC8;position:relative;overflow:hidden;">
+                <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                  <rect x="9" y="17" width="36" height="24" rx="5" stroke="rgba(0,0,0,0.5)" stroke-width="3.5" fill="rgba(0,0,0,0.1)"/>
+                  <path d="M9 23 L45 23" stroke="rgba(0,0,0,0.3)" stroke-width="3" stroke-linecap="round"/>
+                  <rect x="33" y="22" width="12" height="10" rx="3" stroke="rgba(0,0,0,0.5)" stroke-width="2.5" fill="rgba(0,0,0,0.1)"/>
+                  <circle cx="39" cy="27" r="2.5" fill="rgba(0,0,0,0.45)"/>
+                  <g transform="translate(36,4) scale(0.09)">
+                    <rect x="14" y="10" width="16" height="68" rx="8" fill="rgba(0,0,0,0.45)"/>
+                    <path d="M30 10 L54 10 A24 24 0 0 1 54 58 L30 58 Z" fill="rgba(0,0,0,0.45)"/>
+                    <path d="M30 22 L50 22 A12 12 0 0 1 50 46 L30 46 Z" fill="#B8BEC8"/>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="subbrand-name" style="color:var(--finance);">Finanças</div>
+            <div class="subbrand-desc" style="margin-top:6px;">Controle financeiro, pagamentos e gestão de gastos do dia a dia.</div>
+          </div>
+
+          <div class="brand-color-row">
+            <div class="brand-swatch" style="background:#B8BEC8;box-shadow:0 0 12px rgba(184,190,200,0.3);"></div>
+            <div class="brand-color-info">
+              <div class="brand-color-name">Finance Silver</div>
+              <div class="brand-color-hex">#B8BEC8</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FITNESS -->
+      <div class="subbrand-card fitness">
+        <div class="subbrand-top-bar"></div>
+        <div class="subbrand-stage">
+
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);font-weight:600;">Logo principal</div>
+            <div class="combined-logo">
+              <div class="logo-p-block">
+                <svg width="28" height="28" viewBox="0 0 48 48" fill="none">
+                  <rect x="12" y="8" width="6" height="32" rx="3" fill="#4AA8FF"/>
+                  <rect x="12" y="8" width="16" height="6" rx="3" fill="#4AA8FF"/>
+                  <rect x="24" y="8" width="6" height="6" fill="#4AA8FF"/>
+                  <rect x="26" y="13" width="5" height="12" rx="2.5" fill="#4AA8FF" opacity="0.85"/>
+                  <rect x="12" y="22" width="16" height="5" rx="2.5" fill="#4AA8FF" opacity="0.7"/>
+                  <circle cx="36" cy="38" r="4" fill="#4AA8FF" opacity="0.5"/>
+                </svg>
+              </div>
+              <div class="logo-divider"></div>
+              <div class="logo-icon-block" style="background:var(--fitness-dim);">
+                <!-- Dumbbell icon -->
+                <svg width="28" height="28" viewBox="0 0 56 56" fill="none">
+                  <line x1="18" y1="28" x2="38" y2="28" stroke="#76D3C4" stroke-width="3.5" stroke-linecap="round"/>
+                  <rect x="8"  y="20" width="7" height="16" rx="3.5" fill="#76D3C4"/>
+                  <rect x="13" y="22" width="5" height="12" rx="2.5" fill="#76D3C4" opacity="0.55"/>
+                  <rect x="41" y="20" width="7" height="16" rx="3.5" fill="#76D3C4"/>
+                  <rect x="38" y="22" width="5" height="12" rx="2.5" fill="#76D3C4" opacity="0.55"/>
+                </svg>
+              </div>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:12px;margin-top:4px;">
+              <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);font-weight:600;min-width:80px;">Ícone app</div>
+              <!-- Dark bg: haltere grande centro + P pequeno canto sup-dir -->
+              <div style="width:56px;height:56px;border-radius:14px;background:#13151A;border:1px solid rgba(118,211,196,0.2);position:relative;overflow:hidden;box-shadow:0 0 16px var(--fitness-glow);">
+                <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                  <!-- Haltere com discos (opção A aprovada) -->
+                  <line x1="18" y1="28" x2="38" y2="28" stroke="#76D3C4" stroke-width="3.5" stroke-linecap="round"/>
+                  <rect x="8"  y="20" width="7" height="16" rx="3.5" fill="#76D3C4"/>
+                  <rect x="13" y="22" width="5" height="12" rx="2.5" fill="#76D3C4" opacity="0.55"/>
+                  <rect x="41" y="20" width="7" height="16" rx="3.5" fill="#76D3C4"/>
+                  <rect x="38" y="22" width="5" height="12" rx="2.5" fill="#76D3C4" opacity="0.55"/>
+                  <!-- P semicírculo canto sup-dir -->
+                  <g transform="translate(36,4) scale(0.09)">
+                    <rect x="14" y="10" width="16" height="68" rx="8" fill="#76D3C4" opacity="0.75"/>
+                    <path d="M30 10 L54 10 A24 24 0 0 1 54 58 L30 58 Z" fill="#76D3C4" opacity="0.75"/>
+                    <path d="M30 22 L50 22 A12 12 0 0 1 50 46 L30 46 Z" fill="#13151A"/>
+                  </g>
+                </svg>
+              </div>
+              <!-- Solid bg -->
+              <div style="width:56px;height:56px;border-radius:14px;background:#76D3C4;position:relative;overflow:hidden;">
+                <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                  <line x1="18" y1="28" x2="38" y2="28" stroke="rgba(0,0,0,0.4)" stroke-width="3.5" stroke-linecap="round"/>
+                  <rect x="8"  y="20" width="7" height="16" rx="3.5" fill="rgba(0,0,0,0.5)"/>
+                  <rect x="13" y="22" width="5" height="12" rx="2.5" fill="rgba(0,0,0,0.3)"/>
+                  <rect x="41" y="20" width="7" height="16" rx="3.5" fill="rgba(0,0,0,0.5)"/>
+                  <rect x="38" y="22" width="5" height="12" rx="2.5" fill="rgba(0,0,0,0.3)"/>
+                  <g transform="translate(36,4) scale(0.09)">
+                    <rect x="14" y="10" width="16" height="68" rx="8" fill="rgba(0,0,0,0.45)"/>
+                    <path d="M30 10 L54 10 A24 24 0 0 1 54 58 L30 58 Z" fill="rgba(0,0,0,0.45)"/>
+                    <path d="M30 22 L50 22 A12 12 0 0 1 50 46 L30 46 Z" fill="#76D3C4"/>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="subbrand-name" style="color:var(--fitness);">Fitness</div>
+            <div class="subbrand-desc" style="margin-top:6px;">Treinos, acompanhamento de saúde e conexão com personal trainers.</div>
+          </div>
+
+          <div class="brand-color-row">
+            <div class="brand-swatch" style="background:#76D3C4;box-shadow:0 0 12px rgba(118,211,196,0.3);"></div>
+            <div class="brand-color-info">
+              <div class="brand-color-name">Fitness Teal</div>
+              <div class="brand-color-hex">#76D3C4</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 03 ECOSYSTEM MAP ══ -->
+  <section>
+    <div class="sec-label">03 — Arquitetura</div>
+    <h2 class="sec-title">Mapa do Ecossistema</h2>
+    <p class="sec-sub">Como as marcas se relacionam visualmente — o P azul é o elo entre todas.</p>
+
+    <div class="ecosystem-map">
+      <div class="eco-center">
+        <div class="eco-master-badge">
+          <div class="dot"></div>
+          Ploxo Ecossistema
+        </div>
+        <div class="eco-tagline">Marca raiz · Azul #4AA8FF · Âncora visual de todas as verticais</div>
+      </div>
+      <div class="eco-connector"></div>
+      <div class="eco-grid">
+        <div class="eco-sub reforma">
+          <div class="eco-sub-header">
+            <div class="eco-sub-icon">🏠</div>
+            <span class="eco-sub-name" style="color:var(--reforma)">Reforma</span>
+          </div>
+          <div class="eco-sub-desc">Casa & construção<br><span style="font-family:monospace;font-size:10px;color:var(--reforma)">#FF7B4A</span></div>
+        </div>
+        <div class="eco-sub finance">
+          <div class="eco-sub-header">
+            <div class="eco-sub-icon">💰</div>
+            <span class="eco-sub-name" style="color:var(--finance)">Finanças</span>
+          </div>
+          <div class="eco-sub-desc">Pagamentos & controle<br><span style="font-family:monospace;font-size:10px;color:var(--finance)">#B8BEC8</span></div>
+        </div>
+        <div class="eco-sub fitness">
+          <div class="eco-sub-header">
+            <div class="eco-sub-icon">💪</div>
+            <span class="eco-sub-name" style="color:var(--fitness)">Fitness</span>
+          </div>
+          <div class="eco-sub-desc">Saúde & treinos<br><span style="font-family:monospace;font-size:10px;color:var(--fitness)">#76D3C4</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 04 COLOR SYSTEM ══ -->
+  <section>
+    <div class="sec-label">04 — Sistema de Cores</div>
+    <h2 class="sec-title">Paleta do Ecossistema</h2>
+    <p class="sec-sub">Cada cor foi escolhida para ter alto contraste entre si — fácil de distinguir na interface e memorável para o usuário.</p>
+
+    <div class="color-system-grid">
+      <div class="cs-card">
+        <div class="cs-swatch master"><span class="cs-label">Ecossistema</span></div>
+        <div class="cs-info">
+          <div class="cs-name">Ploxo Blue</div>
+          <div class="cs-hex">#4AA8FF</div>
+          <div class="cs-usage">Marca raiz, navbar, elementos de conexão entre apps</div>
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-swatch reforma"><span class="cs-label">Reforma</span></div>
+        <div class="cs-info">
+          <div class="cs-name">Reforma Orange</div>
+          <div class="cs-hex">#FF7B4A</div>
+          <div class="cs-usage">Casa, construção, materiais. Energia e ação manual</div>
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-swatch finance"><span class="cs-label">Finanças</span></div>
+        <div class="cs-info">
+          <div class="cs-name">Finance Silver</div>
+          <div class="cs-hex">#B8BEC8</div>
+          <div class="cs-usage">Dinheiro, crescimento, positividade financeira</div>
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-swatch fitness"><span class="cs-label">Fitness</span></div>
+        <div class="cs-info">
+          <div class="cs-name">Fitness Teal</div>
+          <div class="cs-hex">#76D3C4</div>
+          <div class="cs-usage">Energia, superação, performance e saúde</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 05 REGRAS ══ -->
+  <section>
+    <div class="sec-label">05 — Regras de Uso</div>
+    <h2 class="sec-title">Como Usar o Sistema</h2>
+    <p class="sec-sub">Diretrizes para garantir consistência em todos os pontos de contato da marca.</p>
+
+    <div class="rules-grid">
+      <div class="rule-card">
+        <div class="rule-title"><span style="color:var(--ploxo)">✓</span> Use assim</div>
+        <div class="rule-item"><span class="rule-bullet" style="color:var(--ploxo)">✓</span> O P azul sempre acompanha o ícone da vertical — nunca substitua a cor do P</div>
+        <div class="rule-item"><span class="rule-bullet" style="color:var(--ploxo)">✓</span> Cada vertical usa exclusivamente sua cor em CTAs, ícones e destaques</div>
+        <div class="rule-item"><span class="rule-bullet" style="color:var(--ploxo)">✓</span> Fundos sempre em dark (#0C0D10, #13151A) ou branco (#F4F5F7)</div>
+        <div class="rule-item"><span class="rule-bullet" style="color:var(--ploxo)">✓</span> O ícone da vertical pode aparecer sozinho quando o contexto já deixa claro que é Ploxo</div>
+        <div class="rule-item"><span class="rule-bullet" style="color:var(--ploxo)">✓</span> Mantenha espaçamento mínimo de 16px ao redor do logo combinado</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-title"><span style="color:#FF6B6B">✗</span> Evite</div>
+        <div class="rule-item"><span class="rule-bullet" style="color:#FF6B6B">✗</span> Trocar a cor do P para a cor da vertical — o azul é o elo imutável</div>
+        <div class="rule-item"><span class="rule-bullet" style="color:#FF6B6B">✗</span> Misturar as cores de verticais diferentes numa mesma tela</div>
+        <div class="rule-item"><span class="rule-bullet" style="color:#FF6B6B">✗</span> Usar degradê ou sombra nos logos — sempre cores sólidas</div>
+        <div class="rule-item"><span class="rule-bullet" style="color:#FF6B6B">✗</span> Redimensionar o P e o ícone em proporções diferentes entre si</div>
+        <div class="rule-item"><span class="rule-bullet" style="color:#FF6B6B">✗</span> Usar os logos sobre fundos coloridos — apenas dark ou branco</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 06 CSS TOKENS ══ -->
+  <section>
+    <div class="sec-label">06 — Para Devs</div>
+    <h2 class="sec-title">CSS Tokens</h2>
+    <p class="sec-sub">Copie e cole no root do projeto. Todas as decisões de design traduzidas em variáveis CSS prontas para usar.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;">
+
+      <!-- Colors -->
+      <div style="background:#0D0E12;border:1px solid rgba(255,255,255,0.07);border-radius:20px;overflow:hidden;">
+        <div style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:8px;">
+          <div style="width:6px;height:6px;border-radius:50%;background:#4AA8FF"></div>
+          <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#6B7280">Cores</span>
+        </div>
+        <pre style="padding:20px;font-size:11.5px;line-height:1.9;color:#F4F5F7;font-family:'SF Mono','Fira Code',monospace;overflow-x:auto;margin:0"><span style="color:#6B7280">/* Backgrounds */</span>
+<span style="color:#4AA8FF">--color-bg</span>:         #0C0D10;
+<span style="color:#4AA8FF">--color-surface</span>:    #13151A;
+<span style="color:#4AA8FF">--color-surface-2</span>:  #1A1D24;
+<span style="color:#4AA8FF">--color-border</span>:     rgba(255,255,255,0.07);
+
+<span style="color:#6B7280">/* Texto */</span>
+<span style="color:#4AA8FF">--color-text</span>:       #F4F5F7;
+<span style="color:#4AA8FF">--color-muted</span>:      #6B7280;
+<span style="color:#4AA8FF">--color-subtle</span>:     #3A3F4B;
+
+<span style="color:#6B7280">/* Marca */</span>
+<span style="color:#4AA8FF">--color-ploxo</span>:      #4AA8FF;
+<span style="color:#4AA8FF">--color-reforma</span>:    #FF7B4A;
+<span style="color:#4AA8FF">--color-finance</span>:    #B8BEC8;
+<span style="color:#4AA8FF">--color-fitness</span>:    #76D3C4;
+
+<span style="color:#6B7280">/* Semânticas */</span>
+<span style="color:#4AA8FF">--color-error</span>:      #FF6B6B;
+<span style="color:#4AA8FF">--color-warning</span>:    #FFD166;
+<span style="color:#4AA8FF">--color-success</span>:    #76D3C4;</pre>
+      </div>
+
+      <!-- Typography + Spacing -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="background:#0D0E12;border:1px solid rgba(255,255,255,0.07);border-radius:20px;overflow:hidden;flex:1">
+          <div style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:8px;">
+            <div style="width:6px;height:6px;border-radius:50%;background:#4AA8FF"></div>
+            <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#6B7280">Tipografia</span>
+          </div>
+          <pre style="padding:20px;font-size:11.5px;line-height:1.9;color:#F4F5F7;font-family:'SF Mono','Fira Code',monospace;overflow-x:auto;margin:0"><span style="color:#4AA8FF">--font-display</span>:  'Syne', sans-serif;
+<span style="color:#4AA8FF">--font-body</span>:     'DM Sans', sans-serif;
+
+<span style="color:#4AA8FF">--font-display-weight</span>: 800;
+<span style="color:#4AA8FF">--font-body-weight</span>:    400;
+<span style="color:#4AA8FF">--font-medium-weight</span>:  500;
+<span style="color:#4AA8FF">--font-light-weight</span>:   300;</pre>
+        </div>
+
+        <div style="background:#0D0E12;border:1px solid rgba(255,255,255,0.07);border-radius:20px;overflow:hidden;flex:1">
+          <div style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:8px;">
+            <div style="width:6px;height:6px;border-radius:50%;background:#4AA8FF"></div>
+            <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#6B7280">Raios + Sombras</span>
+          </div>
+          <pre style="padding:20px;font-size:11.5px;line-height:1.9;color:#F4F5F7;font-family:'SF Mono','Fira Code',monospace;overflow-x:auto;margin:0"><span style="color:#4AA8FF">--radius-sm</span>:   6px;
+<span style="color:#4AA8FF">--radius-md</span>:   12px;
+<span style="color:#4AA8FF">--radius-lg</span>:   20px;
+<span style="color:#4AA8FF">--radius-xl</span>:   28px;
+<span style="color:#4AA8FF">--radius-full</span>: 9999px;
+
+<span style="color:#4AA8FF">--shadow-sm</span>: 0 1px 3px rgba(0,0,0,0.4);
+<span style="color:#4AA8FF">--shadow-md</span>: 0 4px 16px rgba(0,0,0,0.5);
+<span style="color:#4AA8FF">--shadow-lg</span>: 0 8px 32px rgba(0,0,0,0.6);</pre>
+        </div>
+      </div>
+
+      <!-- Spacing -->
+      <div style="background:#0D0E12;border:1px solid rgba(255,255,255,0.07);border-radius:20px;overflow:hidden;">
+        <div style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:8px;">
+          <div style="width:6px;height:6px;border-radius:50%;background:#4AA8FF"></div>
+          <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#6B7280">Espaçamento · Base 8px</span>
+        </div>
+        <pre style="padding:20px;font-size:11.5px;line-height:1.9;color:#F4F5F7;font-family:'SF Mono','Fira Code',monospace;overflow-x:auto;margin:0"><span style="color:#4AA8FF">--space-1</span>:  4px;   <span style="color:#6B7280">/* micro gap */</span>
+<span style="color:#4AA8FF">--space-2</span>:  8px;   <span style="color:#6B7280">/* inline gap */</span>
+<span style="color:#4AA8FF">--space-3</span>:  12px;
+<span style="color:#4AA8FF">--space-4</span>:  16px;  <span style="color:#6B7280">/* base padding */</span>
+<span style="color:#4AA8FF">--space-5</span>:  20px;
+<span style="color:#4AA8FF">--space-6</span>:  24px;  <span style="color:#6B7280">/* card padding */</span>
+<span style="color:#4AA8FF">--space-8</span>:  32px;
+<span style="color:#4AA8FF">--space-10</span>: 40px;
+<span style="color:#4AA8FF">--space-12</span>: 48px;
+<span style="color:#4AA8FF">--space-16</span>: 64px;  <span style="color:#6B7280">/* section gap */</span>
+<span style="color:#4AA8FF">--space-20</span>: 80px;
+<span style="color:#4AA8FF">--space-24</span>: 96px;  <span style="color:#6B7280">/* hero padding */</span></pre>
+      </div>
+
+      <!-- Motion + Breakpoints -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="background:#0D0E12;border:1px solid rgba(255,255,255,0.07);border-radius:20px;overflow:hidden;">
+          <div style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:8px;">
+            <div style="width:6px;height:6px;border-radius:50%;background:#4AA8FF"></div>
+            <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#6B7280">Motion</span>
+          </div>
+          <pre style="padding:20px;font-size:11.5px;line-height:1.9;color:#F4F5F7;font-family:'SF Mono','Fira Code',monospace;overflow-x:auto;margin:0"><span style="color:#4AA8FF">--ease-out</span>:  cubic-bezier(0.16,1,0.3,1);
+<span style="color:#4AA8FF">--ease-in</span>:   cubic-bezier(0.4,0,1,1);
+<span style="color:#4AA8FF">--ease-base</span>: cubic-bezier(0.4,0,0.2,1);
+
+<span style="color:#4AA8FF">--duration-fast</span>:   120ms;
+<span style="color:#4AA8FF">--duration-base</span>:   200ms;
+<span style="color:#4AA8FF">--duration-slow</span>:   350ms;
+<span style="color:#4AA8FF">--duration-enter</span>:  500ms;</pre>
+        </div>
+        <div style="background:#0D0E12;border:1px solid rgba(255,255,255,0.07);border-radius:20px;overflow:hidden;">
+          <div style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:8px;">
+            <div style="width:6px;height:6px;border-radius:50%;background:#4AA8FF"></div>
+            <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#6B7280">Breakpoints</span>
+          </div>
+          <pre style="padding:20px;font-size:11.5px;line-height:1.9;color:#F4F5F7;font-family:'SF Mono','Fira Code',monospace;overflow-x:auto;margin:0"><span style="color:#6B7280">/* Mobile first */</span>
+<span style="color:#4AA8FF">--bp-sm</span>:  480px;   <span style="color:#6B7280">/* phone-lg */</span>
+<span style="color:#4AA8FF">--bp-md</span>:  768px;   <span style="color:#6B7280">/* tablet */</span>
+<span style="color:#4AA8FF">--bp-lg</span>:  1024px;  <span style="color:#6B7280">/* desktop */</span>
+<span style="color:#4AA8FF">--bp-xl</span>:  1280px;  <span style="color:#6B7280">/* wide */</span>
+<span style="color:#4AA8FF">--bp-2xl</span>: 1536px;  <span style="color:#6B7280">/* ultra */</span></pre>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 07 ESCALA TIPOGRÁFICA ══ -->
+  <section>
+    <div class="sec-label">07 — Para Devs</div>
+    <h2 class="sec-title">Escala Tipográfica</h2>
+    <p class="sec-sub">Hierarquia completa — display em Syne 800, corpo em DM Sans. Use os tokens de tamanho diretamente no CSS.</p>
+
+    <div style="background:#0D0E12;border:1px solid rgba(255,255,255,0.07);border-radius:24px;overflow:hidden;margin-top:8px;">
+
+      <!-- header da tabela -->
+      <div style="display:grid;grid-template-columns:100px 1fr 80px 80px 100px 120px;gap:0;padding:12px 24px;border-bottom:1px solid rgba(255,255,255,0.06);">
+        <span style="font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#3A3F4B">Token</span>
+        <span style="font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#3A3F4B">Exemplo</span>
+        <span style="font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#3A3F4B">Size</span>
+        <span style="font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#3A3F4B">L-H</span>
+        <span style="font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#3A3F4B">Weight</span>
+        <span style="font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#3A3F4B">Fonte</span>
+      </div>
+
+      <!-- rows -->
+      <div style="display:grid;grid-template-columns:100px 1fr 80px 80px 100px 120px;gap:0;padding:20px 24px 16px;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center;">
+        <span style="font-size:11px;font-family:'SF Mono','Fira Code',monospace;color:#4AA8FF">text-hero</span>
+        <span style="font-family:'Syne',sans-serif;font-size:40px;font-weight:800;letter-spacing:-2px;line-height:1;color:#F4F5F7">Ploxo</span>
+        <span style="font-size:11px;color:#6B7280">56px</span>
+        <span style="font-size:11px;color:#6B7280">1.0</span>
+        <span style="font-size:11px;color:#6B7280">800</span>
+        <span style="font-size:11px;color:#6B7280">Syne</span>
+      </div>
+      <div style="display:grid;grid-template-columns:100px 1fr 80px 80px 100px 120px;gap:0;padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center;">
+        <span style="font-size:11px;font-family:'SF Mono','Fira Code',monospace;color:#4AA8FF">text-h1</span>
+        <span style="font-family:'Syne',sans-serif;font-size:30px;font-weight:800;letter-spacing:-1.2px;line-height:1.1;color:#F4F5F7">Título da página</span>
+        <span style="font-size:11px;color:#6B7280">40px</span>
+        <span style="font-size:11px;color:#6B7280">1.1</span>
+        <span style="font-size:11px;color:#6B7280">800</span>
+        <span style="font-size:11px;color:#6B7280">Syne</span>
+      </div>
+      <div style="display:grid;grid-template-columns:100px 1fr 80px 80px 100px 120px;gap:0;padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center;">
+        <span style="font-size:11px;font-family:'SF Mono','Fira Code',monospace;color:#4AA8FF">text-h2</span>
+        <span style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.8px;line-height:1.2;color:#F4F5F7">Título de seção</span>
+        <span style="font-size:11px;color:#6B7280">28px</span>
+        <span style="font-size:11px;color:#6B7280">1.2</span>
+        <span style="font-size:11px;color:#6B7280">800</span>
+        <span style="font-size:11px;color:#6B7280">Syne</span>
+      </div>
+      <div style="display:grid;grid-template-columns:100px 1fr 80px 80px 100px 120px;gap:0;padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center;">
+        <span style="font-size:11px;font-family:'SF Mono','Fira Code',monospace;color:#4AA8FF">text-h3</span>
+        <span style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;letter-spacing:-0.4px;line-height:1.3;color:#F4F5F7">Subtítulo de card</span>
+        <span style="font-size:11px;color:#6B7280">20px</span>
+        <span style="font-size:11px;color:#6B7280">1.3</span>
+        <span style="font-size:11px;color:#6B7280">800</span>
+        <span style="font-size:11px;color:#6B7280">Syne</span>
+      </div>
+      <div style="display:grid;grid-template-columns:100px 1fr 80px 80px 100px 120px;gap:0;padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center;">
+        <span style="font-size:11px;font-family:'SF Mono','Fira Code',monospace;color:#4AA8FF">text-lead</span>
+        <span style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:400;line-height:1.6;color:#F4F5F7">Parágrafo de introdução ou descrição longa.</span>
+        <span style="font-size:11px;color:#6B7280">18px</span>
+        <span style="font-size:11px;color:#6B7280">1.6</span>
+        <span style="font-size:11px;color:#6B7280">400</span>
+        <span style="font-size:11px;color:#6B7280">DM Sans</span>
+      </div>
+      <div style="display:grid;grid-template-columns:100px 1fr 80px 80px 100px 120px;gap:0;padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center;">
+        <span style="font-size:11px;font-family:'SF Mono','Fira Code',monospace;color:#4AA8FF">text-body</span>
+        <span style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:400;line-height:1.65;color:#F4F5F7">Texto corrido padrão da interface.</span>
+        <span style="font-size:11px;color:#6B7280">16px</span>
+        <span style="font-size:11px;color:#6B7280">1.65</span>
+        <span style="font-size:11px;color:#6B7280">400</span>
+        <span style="font-size:11px;color:#6B7280">DM Sans</span>
+      </div>
+      <div style="display:grid;grid-template-columns:100px 1fr 80px 80px 100px 120px;gap:0;padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center;">
+        <span style="font-size:11px;font-family:'SF Mono','Fira Code',monospace;color:#4AA8FF">text-sm</span>
+        <span style="font-family:'DM Sans',sans-serif;font-size:11.5px;font-weight:400;line-height:1.6;color:#6B7280">Legenda, metadado, informação secundária.</span>
+        <span style="font-size:11px;color:#6B7280">14px</span>
+        <span style="font-size:11px;color:#6B7280">1.6</span>
+        <span style="font-size:11px;color:#6B7280">300</span>
+        <span style="font-size:11px;color:#6B7280">DM Sans</span>
+      </div>
+      <div style="display:grid;grid-template-columns:100px 1fr 80px 80px 100px 120px;gap:0;padding:16px 24px;align-items:center;">
+        <span style="font-size:11px;font-family:'SF Mono','Fira Code',monospace;color:#4AA8FF">text-label</span>
+        <span style="font-family:'DM Sans',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#6B7280">RÓTULO · ETIQUETA · BADGE</span>
+        <span style="font-size:11px;color:#6B7280">11px</span>
+        <span style="font-size:11px;color:#6B7280">1.4</span>
+        <span style="font-size:11px;color:#6B7280">600</span>
+        <span style="font-size:11px;color:#6B7280">DM Sans</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 08 COMPONENTES ══ -->
+  <section>
+    <div class="sec-label">08 — Para Devs</div>
+    <h2 class="sec-title">Componentes Base</h2>
+    <p class="sec-sub">Botões, inputs e cards prontos com estados. Replicar em todas as verticais trocando apenas a variável de cor.</p>
+
+    <!-- BOTÕES -->
+    <div style="margin-bottom:40px;">
+      <div style="font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#6B7280;margin-bottom:20px;">Botões</div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:16px;">
+
+        <!-- Primary -->
+        <button style="background:#4AA8FF;color:#0C0D10;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:12px 24px;border-radius:10px;border:none;cursor:pointer;letter-spacing:-0.2px;">Ação principal</button>
+
+        <!-- Secondary -->
+        <button style="background:rgba(74,168,255,0.1);color:#4AA8FF;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:12px 24px;border-radius:10px;border:1px solid rgba(74,168,255,0.25);cursor:pointer;">Secundário</button>
+
+        <!-- Ghost -->
+        <button style="background:transparent;color:#F4F5F7;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:400;padding:12px 24px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);cursor:pointer;">Ghost</button>
+
+        <!-- Danger -->
+        <button style="background:rgba(255,107,107,0.1);color:#FF6B6B;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:12px 24px;border-radius:10px;border:1px solid rgba(255,107,107,0.25);cursor:pointer;">Deletar</button>
+
+        <!-- Disabled -->
+        <button style="background:#1A1D24;color:#3A3F4B;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:400;padding:12px 24px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);cursor:not-allowed;">Desabilitado</button>
+
+      </div>
+
+      <!-- Vertical variants -->
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:12px;">
+        <button style="background:#FF7B4A;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:12px 24px;border-radius:10px;border:none;cursor:pointer;">Reforma CTA</button>
+        <button style="background:#B8BEC8;color:#0C0D10;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:12px 24px;border-radius:10px;border:none;cursor:pointer;">Finanças CTA</button>
+        <button style="background:#76D3C4;color:#0C0D10;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:12px 24px;border-radius:10px;border:none;cursor:pointer;">Fitness CTA</button>
+      </div>
+
+      <!-- Sizes -->
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+        <button style="background:#4AA8FF;color:#0C0D10;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;padding:8px 16px;border-radius:8px;border:none;cursor:pointer;">Pequeno</button>
+        <button style="background:#4AA8FF;color:#0C0D10;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:12px 24px;border-radius:10px;border:none;cursor:pointer;">Médio</button>
+        <button style="background:#4AA8FF;color:#0C0D10;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;padding:16px 32px;border-radius:12px;border:none;cursor:pointer;">Grande</button>
+      </div>
+
+      <!-- Token annotation -->
+      <div style="margin-top:16px;padding:14px 18px;background:#0D0E12;border:1px solid rgba(255,255,255,0.06);border-radius:12px;">
+        <pre style="font-size:11px;line-height:1.8;color:#6B7280;font-family:'SF Mono','Fira Code',monospace;margin:0"><span style="color:#F4F5F7">.btn-primary</span> {
+  background:    <span style="color:#4AA8FF">var(--color-ploxo)</span>;
+  color:         <span style="color:#4AA8FF">var(--color-bg)</span>;
+  font-family:   <span style="color:#4AA8FF">var(--font-body)</span>;
+  font-weight:   <span style="color:#4AA8FF">var(--font-medium-weight)</span>;
+  padding:       <span style="color:#4AA8FF">var(--space-3) var(--space-6)</span>;
+  border-radius: <span style="color:#4AA8FF">var(--radius-md)</span>;
+  transition:    opacity <span style="color:#4AA8FF">var(--duration-base) var(--ease-out)</span>;
+}
+<span style="color:#F4F5F7">.btn-primary:hover</span> { opacity: 0.88; }
+<span style="color:#F4F5F7">.btn-primary:active</span> { opacity: 0.76; transform: scale(0.98); }</pre>
+      </div>
+    </div>
+
+    <!-- INPUTS -->
+    <div style="margin-bottom:40px;">
+      <div style="font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#6B7280;margin-bottom:20px;">Inputs</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:640px;">
+
+        <!-- Default -->
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <label style="font-size:12px;font-weight:500;color:#F4F5F7;font-family:'DM Sans',sans-serif;">E-mail</label>
+          <input type="text" value="usuario@ploxo.com" style="background:#13151A;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:12px 16px;color:#F4F5F7;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;width:100%;">
+        </div>
+
+        <!-- Focus state -->
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <label style="font-size:12px;font-weight:500;color:#4AA8FF;font-family:'DM Sans',sans-serif;">Senha <span style="color:#6B7280;font-weight:300">(foco)</span></label>
+          <input type="password" value="••••••••" style="background:#13151A;border:1px solid #4AA8FF;border-radius:10px;padding:12px 16px;color:#F4F5F7;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;box-shadow:0 0 0 3px rgba(74,168,255,0.15);width:100%;">
+        </div>
+
+        <!-- Error state -->
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <label style="font-size:12px;font-weight:500;color:#FF6B6B;font-family:'DM Sans',sans-serif;">CPF <span style="color:#FF6B6B;font-weight:300">(erro)</span></label>
+          <input type="text" value="000.000.000-00" style="background:#13151A;border:1px solid #FF6B6B;border-radius:10px;padding:12px 16px;color:#FF6B6B;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;box-shadow:0 0 0 3px rgba(255,107,107,0.12);width:100%;">
+          <span style="font-size:12px;color:#FF6B6B;font-family:'DM Sans',sans-serif;">CPF inválido</span>
+        </div>
+
+        <!-- Disabled -->
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <label style="font-size:12px;font-weight:500;color:#3A3F4B;font-family:'DM Sans',sans-serif;">Campo bloqueado</label>
+          <input type="text" value="Não editável" disabled style="background:#0D0E12;border:1px solid rgba(255,255,255,0.04);border-radius:10px;padding:12px 16px;color:#3A3F4B;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;cursor:not-allowed;width:100%;">
+        </div>
+      </div>
+
+      <div style="margin-top:16px;padding:14px 18px;background:#0D0E12;border:1px solid rgba(255,255,255,0.06);border-radius:12px;max-width:640px;">
+        <pre style="font-size:11px;line-height:1.8;color:#6B7280;font-family:'SF Mono','Fira Code',monospace;margin:0"><span style="color:#F4F5F7">.input</span> {
+  background:    <span style="color:#4AA8FF">var(--color-surface)</span>;
+  border:        1px solid <span style="color:#4AA8FF">var(--color-border)</span>;
+  border-radius: <span style="color:#4AA8FF">var(--radius-md)</span>;
+  padding:       <span style="color:#4AA8FF">var(--space-3) var(--space-4)</span>;
+  color:         <span style="color:#4AA8FF">var(--color-text)</span>;
+  font-family:   <span style="color:#4AA8FF">var(--font-body)</span>;
+  font-size:     16px; <span style="color:#6B7280">/* evita zoom no iOS */</span>
+  transition:    border-color <span style="color:#4AA8FF">var(--duration-fast)</span>, box-shadow <span style="color:#4AA8FF">var(--duration-fast)</span>;
+}
+<span style="color:#F4F5F7">.input:focus</span>  { border-color: <span style="color:#4AA8FF">var(--color-ploxo)</span>; box-shadow: 0 0 0 3px rgba(74,168,255,0.15); }
+<span style="color:#F4F5F7">.input--error</span> { border-color: <span style="color:#4AA8FF">var(--color-error)</span>; box-shadow: 0 0 0 3px rgba(255,107,107,0.12); }</pre>
+      </div>
+    </div>
+
+    <!-- CARDS -->
+    <div>
+      <div style="font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#6B7280;margin-bottom:20px;">Cards</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+
+        <!-- Card padrão -->
+        <div style="background:#13151A;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:24px;">
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#6B7280;margin-bottom:8px;">Padrão</div>
+          <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#F4F5F7;margin-bottom:8px;">Título do Card</div>
+          <div style="font-size:13px;color:#6B7280;line-height:1.6;font-weight:300;">Descrição com texto secundário para contexto adicional.</div>
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);">
+            <button style="background:rgba(74,168,255,0.1);color:#4AA8FF;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:9px 18px;border-radius:8px;border:1px solid rgba(74,168,255,0.2);cursor:pointer;">Ver mais</button>
+          </div>
+        </div>
+
+        <!-- Card Reforma -->
+        <div style="background:#13151A;border:1px solid rgba(255,123,74,0.2);border-radius:20px;padding:24px;box-shadow:0 0 24px rgba(255,123,74,0.08);">
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#FF7B4A;margin-bottom:8px;">Reforma</div>
+          <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#F4F5F7;margin-bottom:8px;">Seu orçamento</div>
+          <div style="font-size:13px;color:#6B7280;line-height:1.6;font-weight:300;">3 profissionais responderam sua solicitação.</div>
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,123,74,0.12);">
+            <button style="background:#FF7B4A;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:9px 18px;border-radius:8px;border:none;cursor:pointer;">Ver propostas</button>
+          </div>
+        </div>
+
+        <!-- Card com badge -->
+        <div style="background:#13151A;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:24px;position:relative;">
+          <div style="position:absolute;top:16px;right:16px;background:rgba(118,211,196,0.12);border:1px solid rgba(118,211,196,0.25);color:#76D3C4;font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border-radius:100px;">Novo</div>
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#76D3C4;margin-bottom:8px;">Fitness</div>
+          <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#F4F5F7;margin-bottom:8px;">Treino do dia</div>
+          <div style="font-size:13px;color:#6B7280;line-height:1.6;font-weight:300;">Peito e tríceps · 45 min · Intermediário</div>
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);">
+            <button style="background:#76D3C4;color:#0C0D10;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:9px 18px;border-radius:8px;border:none;cursor:pointer;">Iniciar treino</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:16px;padding:14px 18px;background:#0D0E12;border:1px solid rgba(255,255,255,0.06);border-radius:12px;">
+        <pre style="font-size:11px;line-height:1.8;color:#6B7280;font-family:'SF Mono','Fira Code',monospace;margin:0"><span style="color:#F4F5F7">.card</span> {
+  background:    <span style="color:#4AA8FF">var(--color-surface)</span>;
+  border:        1px solid <span style="color:#4AA8FF">var(--color-border)</span>;
+  border-radius: <span style="color:#4AA8FF">var(--radius-xl)</span>;
+  padding:       <span style="color:#4AA8FF">var(--space-6)</span>;
+}
+<span style="color:#F4F5F7">.card--reforma</span> { border-color: rgba(255,123,74,0.2); box-shadow: 0 0 24px rgba(255,123,74,0.08); }
+<span style="color:#F4F5F7">.card--finance</span> { border-color: rgba(184,190,200,0.2); box-shadow: 0 0 24px rgba(184,190,200,0.06); }
+<span style="color:#F4F5F7">.card--fitness</span> { border-color: rgba(118,211,196,0.2); box-shadow: 0 0 24px rgba(118,211,196,0.08); }</pre>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span><strong>Ploxo</strong> Brand Architecture · Versão 1.1</span>
+    <span>Uso interno — Compartilhe com o time</span>
+  </footer>
+
+</div>
+</body>
+</html>
