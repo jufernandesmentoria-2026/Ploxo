@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ploxo — Brand System</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2563EB;
+    --blue-light: #DBEAFE;
+    --blue-dark: #1E40AF;
+    --green: #1D7A52;
+    --green-light: #D1FAE5;
+    --orange: #F97316;
+    --orange-light: #FFEDD5;
+    --amber: #F59E0B;
+    --indigo: #6366F1;
+    --bg: #F8FAFC;
+    --white: #FFFFFF;
+    --text: #0F172A;
+    --text-muted: #64748B;
+    --border: #E2E8F0;
+    --fitness: #1D7A52;
+    --reforma: #F59E0B;
+    --financas: #6366F1;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .brand-header {
+    background: var(--text);
+    color: white;
+    padding: 80px 64px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .brand-header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    background: var(--blue);
+    border-radius: 50%;
+    opacity: 0.15;
+  }
+
+  .brand-header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 200px;
+    width: 180px; height: 180px;
+    background: var(--orange);
+    border-radius: 50%;
+    opacity: 0.12;
+  }
+
+  .header-tag {
+    display: inline-block;
+    background: var(--blue);
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 4px;
+    margin-bottom: 28px;
+  }
+
+  .brand-header h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .brand-header h1 span {
+    color: var(--orange);
+  }
+
+  .header-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .header-meta-item {
+    border-left: 2px solid rgba(255,255,255,0.2);
+    padding-left: 16px;
+  }
+
+  .header-meta-item .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.5);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .header-meta-item .value {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    margin-top: 2px;
+  }
+
+  /* NAV */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 64px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+  }
+
+  .sticky-nav a {
+    display: inline-block;
+    padding: 16px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .sticky-nav a:hover {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 80px 64px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .section-desc {
+    color: var(--text-muted);
+    font-size: 15px;
+    max-width: 560px;
+    margin-bottom: 48px;
+  }
+
+  /* LOGO */
+  .logo-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .logo-card {
+    border-radius: 16px;
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .logo-card.on-white { background: white; border: 1px solid var(--border); }
+  .logo-card.on-dark { background: var(--text); }
+  .logo-card.on-blue { background: var(--blue); }
+  .logo-card.on-bg { background: var(--bg); border: 1px solid var(--border); }
+
+  .logo-svg {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-mark {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .logo-text-main {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .logo-text-sub {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-top: 2px;
+  }
+
+  .logo-card-label {
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    opacity: 0.5;
+  }
+
+  /* COLORS */
+  .colors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .color-swatch {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .color-preview {
+    height: 100px;
+    width: 100%;
+  }
+
+  .color-info {
+    background: white;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .color-name {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  .color-hex {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .color-use {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* APP COLORS */
+  .apps-colors {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .app-color-card {
+    border-radius: 16px;
+    padding: 28px;
+    border: 1px solid var(--border);
+    background: white;
+  }
+
+  .app-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .app-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .app-palette {
+    display: flex;
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .app-palette-swatch {
+    height: 32px;
+    border-radius: 6px;
+    flex: 1;
+  }
+
+  /* TYPOGRAPHY */
+  .type-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .type-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+  }
+
+  .type-card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+  }
+
+  .type-scale {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .type-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .type-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    width: 60px;
+    flex-shrink: 0;
+  }
+
+  .type-sample-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+  .type-sample-inter { font-family: 'Inter', sans-serif; }
+
+  /* SPACING */
+  .spacing-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .spacing-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+  }
+
+  .spacing-bar {
+    background: var(--blue-light);
+    border: 2px solid var(--blue);
+    border-radius: 4px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .spacing-info {
+    display: flex;
+    gap: 24px;
+  }
+
+  .spacing-token {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--blue);
+    font-weight: 500;
+  }
+
+  .spacing-px {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .spacing-use {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* COMPONENTS */
+  .components-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+  }
+
+  .comp-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+  }
+
+  .comp-title {
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+  }
+
+  .comp-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+
+  .btn-primary { background: var(--blue); color: white; }
+  .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
+
+  .btn-secondary { background: var(--blue-light); color: var(--blue); }
+  .btn-secondary:hover { background: #BFDBFE; }
+
+  .btn-cta { background: var(--orange); color: white; }
+  .btn-cta:hover { background: #EA6B0A; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(249,115,22,0.3); }
+
+  .btn-ghost { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+
+  .btn-sm { padding: 8px 14px; font-size: 13px; border-radius: 8px; }
+  .btn-lg { padding: 16px 28px; font-size: 16px; border-radius: 12px; }
+
+  /* Inputs */
+  .input-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .input-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .input-field {
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background: white;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .input-field:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+  .input-field.error { border-color: #EF4444; }
+  .input-helper { font-size: 12px; color: var(--text-muted); }
+  .input-error { font-size: 12px; color: #EF4444; }
+
+  /* Badges */
+  .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .badge-blue { background: var(--blue-light); color: var(--blue); }
+  .badge-green { background: var(--green-light); color: #065F46; }
+  .badge-orange { background: var(--orange-light); color: #9A3412; }
+  .badge-gray { background: var(--border); color: var(--text-muted); }
+
+  /* Cards */
+  .ui-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+
+  .card-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  .card-metric {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 2px;
+  }
+
+  .card-metric-label {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .card-trend {
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .trend-up { color: var(--green); }
+
+  /* VOICE & TONE */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .voice-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+  }
+
+  .voice-card .icon {
+    font-size: 28px;
+    margin-bottom: 14px;
+  }
+
+  .voice-card h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .voice-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .do-dont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .do-item, .dont-item {
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+  }
+
+  .do-item { background: var(--green-light); color: #065F46; }
+  .dont-item { background: #FEE2E2; color: #991B1B; }
+
+  .do-item::before { content: '✓  '; font-weight: 700; }
+  .dont-item::before { content: '✕  '; font-weight: 700; }
+
+  /* MOTION */
+  .motion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .motion-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .motion-demo-box {
+    width: 48px;
+    height: 48px;
+    background: var(--blue);
+    border-radius: 12px;
+    margin: 0 auto 16px;
+  }
+
+  .motion-demo-box.hover-demo:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(37,99,235,0.25);
+    transition: all 200ms ease;
+    cursor: pointer;
+  }
+
+  .motion-demo-box.scale-demo:hover {
+    transform: scale(1.05);
+    transition: all 150ms ease;
+    cursor: pointer;
+  }
+
+  .motion-demo-box.fade-demo {
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .motion-name {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .motion-spec {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  /* DONT RULES */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .rule-card {
+    border-radius: 14px;
+    padding: 20px;
+    border: 1.5px dashed;
+  }
+
+  .rule-card.avoid {
+    background: #FFF5F5;
+    border-color: #FECACA;
+  }
+
+  .rule-card.avoid h4 {
+    color: #DC2626;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .rule-card.avoid p {
+    font-size: 13px;
+    color: #7F1D1D;
+  }
+
+  /* GRID DEMO */
+  .grid-demo {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+  }
+
+  .bento-demo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 12px;
+  }
+
+  .bento-cell {
+    border-radius: 14px;
+    padding: 24px;
+    min-height: 100px;
+  }
+
+  .bento-cell.span2 { grid-column: span 2; }
+  .bento-cell.blue { background: var(--blue); color: white; }
+  .bento-cell.light { background: var(--bg); border: 1px solid var(--border); }
+  .bento-cell.green { background: var(--green-light); }
+  .bento-cell.dark { background: var(--text); color: white; }
+  .bento-cell.orange { background: var(--orange); color: white; }
+
+  .bento-cell .cell-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+
+  .bento-cell .cell-sub {
+    font-size: 12px;
+    opacity: 0.7;
+  }
+
+  .bento-cell .cell-num {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-top: 12px;
+  }
+
+  /* FOOTER */
+  .brand-footer {
+    background: var(--text);
+    color: white;
+    padding: 40px 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.03em;
+  }
+
+  .footer-logo span { color: var(--orange); }
+
+  .footer-meta {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* UTIL */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 32px 0;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .tag {
+    background: var(--blue-light);
+    color: var(--blue);
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 5px 10px;
+    border-radius: 6px;
+  }
+
+  @media (max-width: 768px) {
+    .brand-header, .section { padding: 48px 24px; }
+    .sticky-nav { padding: 0 24px; }
+    .type-showcase { grid-template-columns: 1fr; }
+    .bento-demo { grid-template-columns: 1fr 1fr; }
+    .bento-cell.span2 { grid-column: span 2; }
+    .brand-footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+    .do-dont { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="brand-header">
+  <div class="header-tag">Brand System v1.0 — 2025</div>
+  <h1>Ploxo<span>.</span></h1>
+  <p style="font-size:17px; color:rgba(255,255,255,0.6); max-width:600px; margin-top:16px; line-height:1.7;">
+    Ecossistema brasileiro de software para profissionais autônomos que querem crescer. Confiável, prático e acessível.
+  </p>
+  <div class="header-meta">
+    <div class="header-meta-item">
+      <div class="label">Categoria</div>
+      <div class="value">SaaS / Produtividade</div>
+    </div>
+    <div class="header-meta-item">
+      <div class="label">Público</div>
+      <div class="value">Profissionais autônomos brasileiros</div>
+    </div>
+    <div class="header-meta-item">
+      <div class="label">Estilo Visual</div>
+      <div class="value">Bento Grid + Flat Design</div>
+    </div>
+    <div class="header-meta-item">
+      <div class="label">Apps</div>
+      <div class="value">Fitness · Reforma · Finanças</div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="sticky-nav">
+  <a href="#logo">Logo</a>
+  <a href="#cores">Cores</a>
+  <a href="#tipografia">Tipografia</a>
+  <a href="#espacamento">Espaçamento</a>
+  <a href="#componentes">Componentes</a>
+  <a href="#layout">Layout</a>
+  <a href="#voz">Voz & Tom</a>
+  <a href="#movimento">Movimento</a>
+  <a href="#nao-fazer">Não Fazer</a>
+</nav>
+
+<!-- LOGO -->
+<section class="section" id="logo">
+  <div class="section-label">01 — Identidade</div>
+  <h2 class="section-title">Logo & Variações</h2>
+  <p class="section-desc">O logo Ploxo combina um símbolo geométrico com tipografia bold. Sempre use com espaçamento mínimo de 24px ao redor.</p>
+
+  <div class="logo-showcase">
+    <!-- Light -->
+    <div class="logo-card on-white">
+      <div class="logo-svg">
+        <div class="logo-mark" style="background:var(--blue); color:white;">P</div>
+        <div>
+          <div class="logo-text-main" style="color:var(--text);">ploxo</div>
+          <div class="logo-text-sub" style="color:var(--text-muted);">ecossistema de apps</div>
+        </div>
+      </div>
+      <div class="logo-card-label">Versão Principal — Fundo Claro</div>
+    </div>
+
+    <!-- Dark -->
+    <div class="logo-card on-dark">
+      <div class="logo-svg">
+        <div class="logo-mark" style="background:var(--orange); color:white;">P</div>
+        <div>
+          <div class="logo-text-main" style="color:white;">ploxo</div>
+          <div class="logo-text-sub" style="color:rgba(255,255,255,0.5);">ecossistema de apps</div>
+        </div>
+      </div>
+      <div class="logo-card-label" style="color:rgba(255,255,255,0.3);">Versão Invertida — Fundo Escuro</div>
+    </div>
+
+    <!-- Blue -->
+    <div class="logo-card on-blue">
+      <div class="logo-svg">
+        <div class="logo-mark" style="background:white; color:var(--blue);">P</div>
+        <div>
+          <div class="logo-text-main" style="color:white;">ploxo</div>
+          <div class="logo-text-sub" style="color:rgba(255,255,255,0.6);">ecossistema de apps</div>
+        </div>
+      </div>
+      <div class="logo-card-label" style="color:rgba(255,255,255,0.4);">Versão Monocromática — Fundo Azul</div>
+    </div>
+
+    <!-- Icon only -->
+    <div class="logo-card on-bg" style="align-items:center; justify-content:center; text-align:center;">
+      <div style="display:flex; gap:12px; justify-content:center; align-items:center;">
+        <div class="logo-mark" style="background:var(--blue); color:white; width:56px; height:56px; font-size:28px; border-radius:14px;">P</div>
+        <div class="logo-mark" style="background:var(--text); color:white; width:40px; height:40px; font-size:20px; border-radius:10px;">P</div>
+        <div class="logo-mark" style="background:var(--blue); color:white; width:28px; height:28px; font-size:14px; border-radius:7px;">P</div>
+      </div>
+      <div class="logo-card-label" style="text-align:center; margin-top:8px;">Ícone — 56px / 40px / 28px</div>
+    </div>
+  </div>
+
+  <!-- Sub-brand -->
+  <div class="divider"></div>
+  <h3 style="font-family:'Plus Jakarta Sans',sans-serif; font-size:18px; font-weight:700; margin-bottom:8px;">Submarcas — Apps do Ecossistema</h3>
+  <p style="font-size:14px; color:var(--text-muted); margin-bottom:28px;">Cada app combina o "P" da Ploxo com um ícone que representa o core da solução. O símbolo fala antes do texto.</p>
+
+  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px;">
+
+    <!-- PLOXO FITNESS -->
+    <div style="background:white; border:1px solid var(--border); border-radius:20px; overflow:hidden;">
+      <!-- Logo showcase area -->
+      <div style="background:#F0FDF4; padding:36px; display:flex; flex-direction:column; align-items:center; gap:28px; border-bottom:1px solid #D1FAE5;">
+        <!-- Main logo horizontal -->
+        <div style="display:flex; align-items:center; gap:14px;">
+          <!-- Mark: P + dumbbell -->
+          <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="52" height="52" rx="13" fill="#1D7A52"/>
+            <!-- P letter -->
+            <text x="8" y="34" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="26" fill="white">P</text>
+            <!-- Dumbbell icon top-right -->
+            <g transform="translate(28, 7)">
+              <!-- left plate -->
+              <rect x="0" y="4" width="4" height="8" rx="1.5" fill="white" opacity="0.9"/>
+              <!-- bar -->
+              <rect x="4" y="6.5" width="13" height="3" rx="1" fill="white" opacity="0.9"/>
+              <!-- right plate -->
+              <rect x="17" y="4" width="4" height="8" rx="1.5" fill="white" opacity="0.9"/>
+            </g>
+          </svg>
+          <div>
+            <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:22px; letter-spacing:-0.03em; color:#065F46; line-height:1;">ploxo</div>
+            <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:#1D7A52; margin-top:1px;">fitness</div>
+          </div>
+        </div>
+        <!-- Icon only sizes -->
+        <div style="display:flex; align-items:center; gap:10px;">
+          <svg width="40" height="40" viewBox="0 0 52 52" fill="none"><rect width="52" height="52" rx="13" fill="#1D7A52"/><text x="8" y="34" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="26" fill="white">P</text><g transform="translate(28, 7)"><rect x="0" y="4" width="4" height="8" rx="1.5" fill="white" opacity="0.9"/><rect x="4" y="6.5" width="13" height="3" rx="1" fill="white" opacity="0.9"/><rect x="17" y="4" width="4" height="8" rx="1.5" fill="white" opacity="0.9"/></g></svg>
+          <svg width="28" height="28" viewBox="0 0 52 52" fill="none"><rect width="52" height="52" rx="13" fill="#1D7A52"/><text x="8" y="34" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="26" fill="white">P</text><g transform="translate(28, 7)"><rect x="0" y="4" width="4" height="8" rx="1.5" fill="white" opacity="0.9"/><rect x="4" y="6.5" width="13" height="3" rx="1" fill="white" opacity="0.9"/><rect x="17" y="4" width="4" height="8" rx="1.5" fill="white" opacity="0.9"/></g></svg>
+          <svg width="20" height="20" viewBox="0 0 52 52" fill="none"><rect width="52" height="52" rx="13" fill="#1D7A52"/><text x="8" y="34" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="26" fill="white">P</text><g transform="translate(28, 7)"><rect x="0" y="4" width="4" height="8" rx="1.5" fill="white" opacity="0.9"/><rect x="4" y="6.5" width="13" height="3" rx="1" fill="white" opacity="0.9"/><rect x="17" y="4" width="4" height="8" rx="1.5" fill="white" opacity="0.9"/></g></svg>
+        </div>
+      </div>
+      <!-- Info -->
+      <div style="padding:20px 24px;">
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:14px; margin-bottom:4px;">Ploxo Fitness</div>
+        <p style="font-size:13px; color:var(--text-muted); margin-bottom:14px;">Ícone: haltere — representa treino, força e o universo do personal trainer.</p>
+        <div style="display:flex; gap:6px;">
+          <div style="flex:1; height:24px; border-radius:6px; background:#1D7A52;" title="#1D7A52"></div>
+          <div style="flex:1; height:24px; border-radius:6px; background:#D1FAE5;" title="#D1FAE5"></div>
+          <div style="flex:1; height:24px; border-radius:6px; background:#065F46;" title="#065F46"></div>
+          <div style="flex:1; height:24px; border-radius:6px; background:#F97316;" title="#F97316"></div>
+        </div>
+        <div style="display:flex; gap:6px; margin-top:4px;">
+          <div style="flex:1; font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--text-muted); text-align:center;">#1D7A52</div>
+          <div style="flex:1; font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--text-muted); text-align:center;">#D1FAE5</div>
+          <div style="flex:1; font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--text-muted); text-align:center;">#065F46</div>
+          <div style="flex:1; font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--text-muted); text-align:center;">#F97316</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLOXO REFORMA -->
+    <div style="background:white; border:1px solid var(--border); border-radius:20px; overflow:hidden;">
+      <div style="background:#FFFBEB; padding:36px; display:flex; flex-direction:column; align-items:center; gap:28px; border-bottom:1px solid #FDE68A;">
+        <!-- Main logo horizontal -->
+        <div style="display:flex; align-items:center; gap:14px;">
+          <!-- Mark: P + hammer -->
+          <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="52" height="52" rx="13" fill="#F59E0B"/>
+            <!-- P letter -->
+            <text x="8" y="34" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="26" fill="white">P</text>
+            <!-- Hammer icon top-right -->
+            <g transform="translate(29, 6)">
+              <!-- roof -->
+              <polygon points="0,10 9.5,1 19,10" fill="white" opacity="0.95"/>
+              <!-- walls -->
+              <rect x="2" y="10" width="15" height="10" rx="1" fill="white" opacity="0.9"/>
+              <!-- door -->
+              <rect x="7" y="15" width="5" height="5" rx="1" fill="#F59E0B" opacity="0.9"/>
+            </g>
+          </svg>
+          <div>
+            <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:22px; letter-spacing:-0.03em; color:#78350F; line-height:1;">ploxo</div>
+            <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:#F59E0B; margin-top:1px;">reforma</div>
+          </div>
+        </div>
+        <!-- Icon only sizes -->
+        <div style="display:flex; align-items:center; gap:10px;">
+          <svg width="40" height="40" viewBox="0 0 52 52" fill="none"><rect width="52" height="52" rx="13" fill="#F59E0B"/><text x="8" y="34" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="26" fill="white">P</text><g transform="translate(29, 6)"><polygon points="0,10 9.5,1 19,10" fill="white" opacity="0.95"/><rect x="2" y="10" width="15" height="10" rx="1" fill="white" opacity="0.9"/><rect x="7" y="15" width="5" height="5" rx="1" fill="#F59E0B" opacity="0.9"/></g></svg>
+          <svg width="28" height="28" viewBox="0 0 52 52" fill="none"><rect width="52" height="52" rx="13" fill="#F59E0B"/><text x="8" y="34" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="26" fill="white">P</text><g transform="translate(29, 6)"><polygon points="0,10 9.5,1 19,10" fill="white" opacity="0.95"/><rect x="2" y="10" width="15" height="10" rx="1" fill="white" opacity="0.9"/><rect x="7" y="15" width="5" height="5" rx="1" fill="#F59E0B" opacity="0.9"/></g></svg>
+          <svg width="20" height="20" viewBox="0 0 52 52" fill="none"><rect width="52" height="52" rx="13" fill="#F59E0B"/><text x="8" y="34" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="26" fill="white">P</text><g transform="translate(29, 6)"><polygon points="0,10 9.5,1 19,10" fill="white" opacity="0.95"/><rect x="2" y="10" width="15" height="10" rx="1" fill="white" opacity="0.9"/><rect x="7" y="15" width="5" height="5" rx="1" fill="#F59E0B" opacity="0.9"/></g></svg>
+        </div>
+      </div>
+      <!-- Info -->
+      <div style="padding:20px 24px;">
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:14px; margin-bottom:4px;">Ploxo Reforma</div>
+        <p style="font-size:13px; color:var(--text-muted); margin-bottom:14px;">Ícone: casa — representa o lar sendo transformado, obra e o universo da reforma.</p>
+        <div style="display:flex; gap:6px;">
+          <div style="flex:1; height:24px; border-radius:6px; background:#F59E0B;"></div>
+          <div style="flex:1; height:24px; border-radius:6px; background:#FEF3C7;"></div>
+          <div style="flex:1; height:24px; border-radius:6px; background:#78350F;"></div>
+          <div style="flex:1; height:24px; border-radius:6px; background:#2563EB;"></div>
+        </div>
+        <div style="display:flex; gap:6px; margin-top:4px;">
+          <div style="flex:1; font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--text-muted); text-align:center;">#F59E0B</div>
+          <div style="flex:1; font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--text-muted); text-align:center;">#FEF3C7</div>
+          <div style="flex:1; font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--text-muted); text-align:center;">#78350F</div>
+          <div style="flex:1; font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--text-muted); text-align:center;">#2563EB</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLOXO FINANÇAS -->
+    <div style="background:white; border:1px solid var(--border); border-radius:20px; overflow:hidden;">
+      <div style="background:#EEF2FF; padding:36px; display:flex; flex-direction:column; align-items:center; gap:28px; border-bottom:1px solid #C7D2FE;">
+        <!-- Main logo horizontal -->
+        <div style="display:flex; align-items:center; gap:14px;">
+          <!-- Mark: P + chart/coin -->
+          <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="52" height="52" rx="13" fill="#6366F1"/>
+            <!-- P letter -->
+            <text x="8" y="34" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="26" fill="white">P</text>
+            <!-- Bar chart icon top-right -->
+            <g transform="translate(29, 7)">
+              <!-- bar 1 short -->
+              <rect x="0" y="8" width="4" height="8" rx="1" fill="white" opacity="0.7"/>
+              <!-- bar 2 medium -->
+              <rect x="6" y="4" width="4" height="12" rx="1" fill="white" opacity="0.85"/>
+              <!-- bar 3 tall -->
+              <rect x="12" y="0" width="4" height="16" rx="1" fill="white" opacity="1"/>
+            </g>
+          </svg>
+          <div>
+            <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:22px; letter-spacing:-0.03em; color:#312E81; line-height:1;">ploxo</div>
+            <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:#6366F1; margin-top:1px;">finanças</div>
+          </div>
+        </div>
+        <!-- Icon only sizes -->
+        <div style="display:flex; align-items:center; gap:10px;">
+          <svg width="40" height="40" viewBox="0 0 52 52" fill="none"><rect width="52" height="52" rx="13" fill="#6366F1"/><text x="8" y="34" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="26" fill="white">P</text><g transform="translate(29, 7)"><rect x="0" y="8" width="4" height="8" rx="1" fill="white" opacity="0.7"/><rect x="6" y="4" width="4" height="12" rx="1" fill="white" opacity="0.85"/><rect x="12" y="0" width="4" height="16" rx="1" fill="white"/></g></svg>
+          <svg width="28" height="28" viewBox="0 0 52 52" fill="none"><rect width="52" height="52" rx="13" fill="#6366F1"/><text x="8" y="34" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="26" fill="white">P</text><g transform="translate(29, 7)"><rect x="0" y="8" width="4" height="8" rx="1" fill="white" opacity="0.7"/><rect x="6" y="4" width="4" height="12" rx="1" fill="white" opacity="0.85"/><rect x="12" y="0" width="4" height="16" rx="1" fill="white"/></g></svg>
+          <svg width="20" height="20" viewBox="0 0 52 52" fill="none"><rect width="52" height="52" rx="13" fill="#6366F1"/><text x="8" y="34" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="26" fill="white">P</text><g transform="translate(29, 7)"><rect x="0" y="8" width="4" height="8" rx="1" fill="white" opacity="0.7"/><rect x="6" y="4" width="4" height="12" rx="1" fill="white" opacity="0.85"/><rect x="12" y="0" width="4" height="16" rx="1" fill="white"/></g></svg>
+        </div>
+      </div>
+      <!-- Info -->
+      <div style="padding:20px 24px;">
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:14px; margin-bottom:4px;">Ploxo Finanças</div>
+        <p style="font-size:13px; color:var(--text-muted); margin-bottom:14px;">Ícone: gráfico de barras crescente — representa crescimento, controle e clareza financeira.</p>
+        <div style="display:flex; gap:6px;">
+          <div style="flex:1; height:24px; border-radius:6px; background:#6366F1;"></div>
+          <div style="flex:1; height:24px; border-radius:6px; background:#EEF2FF;"></div>
+          <div style="flex:1; height:24px; border-radius:6px; background:#312E81;"></div>
+          <div style="flex:1; height:24px; border-radius:6px; background:#10B981;"></div>
+        </div>
+        <div style="display:flex; gap:6px; margin-top:4px;">
+          <div style="flex:1; font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--text-muted); text-align:center;">#6366F1</div>
+          <div style="flex:1; font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--text-muted); text-align:center;">#EEF2FF</div>
+          <div style="flex:1; font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--text-muted); text-align:center;">#312E81</div>
+          <div style="flex:1; font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--text-muted); text-align:center;">#10B981</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Lógica de construção -->
+  <div style="background:var(--text); border-radius:16px; padding:28px 32px; margin-top:24px; display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:24px;">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:10px;">Lógica do Símbolo</div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:15px; color:white; margin-bottom:6px;">P + Ícone de Nicho</div>
+      <div style="font-size:13px; color:rgba(255,255,255,0.6); line-height:1.6;">O "P" ocupa 2/3 do mark, estabelecendo a família Ploxo. O ícone no canto superior direito identifica o app específico.</div>
+    </div>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:10px;">Fitness</div>
+      <div style="font-size:13px; color:rgba(255,255,255,0.6); line-height:1.6;">Haltere — símbolo universal do treinamento físico. Reconhecível em qualquer tamanho.</div>
+    </div>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:10px;">Reforma</div>
+      <div style="font-size:13px; color:rgba(255,255,255,0.6); line-height:1.6;">Martelo — ferramenta primária da construção civil. Direto e reconhecível.</div>
+    </div>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:10px;">Finanças</div>
+      <div style="font-size:13px; color:rgba(255,255,255,0.6); line-height:1.6;">Barras crescentes — crescimento financeiro. Escalada de barras = evolução do patrimônio.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CORES -->
+<section class="section" id="cores">
+  <div class="section-label">02 — Paleta</div>
+  <h2 class="section-title">Sistema de Cores</h2>
+  <p class="section-desc">Paleta construída para transmitir confiança tecnológica com acessibilidade e calor humano brasileiro.</p>
+
+  <div class="colors-grid">
+    <div class="color-swatch">
+      <div class="color-preview" style="background:#2563EB;"></div>
+      <div class="color-info">
+        <div class="color-name">Azul Ploxo</div>
+        <div class="color-hex">#2563EB</div>
+        <div class="color-use">Cor primária · Links · Foco</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-preview" style="background:#1E40AF;"></div>
+      <div class="color-info">
+        <div class="color-name">Azul Escuro</div>
+        <div class="color-hex">#1E40AF</div>
+        <div class="color-use">Hover · Estados ativos</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-preview" style="background:#DBEAFE;"></div>
+      <div class="color-info">
+        <div class="color-name">Azul Claro</div>
+        <div class="color-hex">#DBEAFE</div>
+        <div class="color-use">Fundos · Badges · Destacar</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-preview" style="background:#F97316;"></div>
+      <div class="color-info">
+        <div class="color-name">Laranja CTA</div>
+        <div class="color-hex">#F97316</div>
+        <div class="color-use">Botões principais · Urgência</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-preview" style="background:#1D7A52;"></div>
+      <div class="color-info">
+        <div class="color-name">Verde Sucesso</div>
+        <div class="color-hex">#1D7A52</div>
+        <div class="color-use">Sucesso · Fitness app</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-preview" style="background:#F8FAFC; border:1px solid #E2E8F0;"></div>
+      <div class="color-info">
+        <div class="color-name">Fundo</div>
+        <div class="color-hex">#F8FAFC</div>
+        <div class="color-use">Background principal</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-preview" style="background:#0F172A;"></div>
+      <div class="color-info">
+        <div class="color-name">Texto Principal</div>
+        <div class="color-hex">#0F172A</div>
+        <div class="color-use">Títulos · Corpo · Labels</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-preview" style="background:#64748B;"></div>
+      <div class="color-info">
+        <div class="color-name">Texto Secundário</div>
+        <div class="color-hex">#64748B</div>
+        <div class="color-use">Subtítulos · Metadata</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-preview" style="background:#E2E8F0;"></div>
+      <div class="color-info">
+        <div class="color-name">Borda</div>
+        <div class="color-hex">#E2E8F0</div>
+        <div class="color-use">Divisores · Bordas cards</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tokens CSS -->
+  <div style="background:var(--text); border-radius:16px; padding:28px; margin-top:8px;">
+    <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:16px;">CSS Variables — copie e use</div>
+    <pre style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#93C5FD; line-height:2; overflow-x:auto;">:root {
+  --color-primary:    #2563EB;
+  --color-primary-dk: #1E40AF;
+  --color-primary-lt: #DBEAFE;
+  --color-cta:        #F97316;
+  --color-success:    #1D7A52;
+  --color-bg:         #F8FAFC;
+  --color-text:       #0F172A;
+  --color-muted:      #64748B;
+  --color-border:     #E2E8F0;
+
+  /* Apps */
+  --color-fitness:    #1D7A52;
+  --color-reforma:    #F59E0B;
+  --color-financas:   #6366F1;
+}</pre>
+  </div>
+</section>
+
+<!-- TIPOGRAFIA -->
+<section class="section" id="tipografia">
+  <div class="section-label">03 — Tipografia</div>
+  <h2 class="section-title">Sistema Tipográfico</h2>
+  <p class="section-desc">Plus Jakarta Sans para títulos e hierarquia. Inter para corpo e interface. JetBrains Mono para código e dados técnicos.</p>
+
+  <div class="type-showcase">
+    <div class="type-card">
+      <div class="type-card-label">Plus Jakarta Sans — Títulos & Destaque</div>
+      <div class="type-scale">
+        <div class="type-row">
+          <div class="type-label">Display</div>
+          <div class="type-sample-jakarta" style="font-size:40px; font-weight:800; letter-spacing:-0.03em; line-height:1;">Ploxo</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">H1</div>
+          <div class="type-sample-jakarta" style="font-size:32px; font-weight:800; letter-spacing:-0.02em; line-height:1.1;">Sua empresa, seu software</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">H2</div>
+          <div class="type-sample-jakarta" style="font-size:24px; font-weight:700; letter-spacing:-0.01em;">Gestão simplificada</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">H3</div>
+          <div class="type-sample-jakarta" style="font-size:18px; font-weight:700;">Ploxo Fitness</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">H4</div>
+          <div class="type-sample-jakarta" style="font-size:15px; font-weight:600;">Métricas do mês</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-card">
+      <div class="type-card-label">Inter — Corpo & Interface</div>
+      <div class="type-scale">
+        <div class="type-row">
+          <div class="type-label">Body L</div>
+          <div class="type-sample-inter" style="font-size:16px; line-height:1.7; color:var(--text-muted);">Software que transforma profissionais autônomos em empresários do seu setor.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">Body</div>
+          <div class="type-sample-inter" style="font-size:14px; line-height:1.6; color:var(--text-muted);">Gerencie alunos, pagamentos e agendamentos em um só lugar.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">Small</div>
+          <div class="type-sample-inter" style="font-size:13px; color:var(--text-muted);">Última atualização: hoje às 14h32</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">Caption</div>
+          <div class="type-sample-inter" style="font-size:12px; color:var(--text-muted);">*Plano gratuito inclui até 5 alunos</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">Mono</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--blue);">R$ 1.249,00 · +12,4%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tag-row">
+    <div class="tag">font-family: 'Plus Jakarta Sans'</div>
+    <div class="tag">font-family: 'Inter'</div>
+    <div class="tag">font-family: 'JetBrains Mono'</div>
+    <div class="tag">Google Fonts — gratuito</div>
+  </div>
+</section>
+
+<!-- ESPAÇAMENTO -->
+<section class="section" id="espacamento">
+  <div class="section-label">04 — Espaçamento</div>
+  <h2 class="section-title">Grid & Espaçamento</h2>
+  <p class="section-desc">Sistema baseado em múltiplos de 4px. Bordas arredondadas xl para aparência acolhedora e moderna.</p>
+
+  <div class="spacing-grid">
+    <div class="spacing-row">
+      <div class="spacing-bar" style="width:4px;"></div>
+      <div class="spacing-info">
+        <span class="spacing-token">spacing-1</span>
+        <span class="spacing-px">4px</span>
+        <span class="spacing-use">Gap mínimo, ícone-texto</span>
+      </div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-bar" style="width:8px;"></div>
+      <div class="spacing-info">
+        <span class="spacing-token">spacing-2</span>
+        <span class="spacing-px">8px</span>
+        <span class="spacing-use">Gap entre badges, chips</span>
+      </div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-bar" style="width:16px;"></div>
+      <div class="spacing-info">
+        <span class="spacing-token">spacing-4</span>
+        <span class="spacing-px">16px</span>
+        <span class="spacing-use">Padding interno de cards</span>
+      </div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-bar" style="width:24px;"></div>
+      <div class="spacing-info">
+        <span class="spacing-token">spacing-6</span>
+        <span class="spacing-px">24px</span>
+        <span class="spacing-use">Gap entre elementos de seção</span>
+      </div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-bar" style="width:48px;"></div>
+      <div class="spacing-info">
+        <span class="spacing-token">spacing-12</span>
+        <span class="spacing-px">48px</span>
+        <span class="spacing-use">Padding de seções mobile</span>
+      </div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-bar" style="width:80px;"></div>
+      <div class="spacing-info">
+        <span class="spacing-token">spacing-20</span>
+        <span class="spacing-px">80px</span>
+        <span class="spacing-use">Padding de seções desktop</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3 style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:16px; margin-bottom:16px;">Border Radius</h3>
+  <div style="display:flex; gap:12px; flex-wrap:wrap;">
+    <div style="text-align:center;">
+      <div style="width:64px; height:64px; background:var(--blue); border-radius:4px; margin:0 auto 8px;"></div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-muted);">4px<br>sm</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="width:64px; height:64px; background:var(--blue); border-radius:8px; margin:0 auto 8px;"></div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-muted);">8px<br>md</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="width:64px; height:64px; background:var(--blue); border-radius:12px; margin:0 auto 8px;"></div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-muted);">12px<br>lg</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="width:64px; height:64px; background:var(--blue); border-radius:16px; margin:0 auto 8px;"></div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-muted);">16px<br>xl ✓</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="width:64px; height:64px; background:var(--blue); border-radius:24px; margin:0 auto 8px;"></div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-muted);">24px<br>2xl</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="width:64px; height:64px; background:var(--blue); border-radius:9999px; margin:0 auto 8px;"></div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-muted);">full<br>pills</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPONENTES -->
+<section class="section" id="componentes">
+  <div class="section-label">05 — Componentes</div>
+  <h2 class="section-title">UI Kit — Componentes Base</h2>
+  <p class="section-desc">Biblioteca base de componentes para os apps Ploxo. Sempre cursor-pointer em elementos clicáveis.</p>
+
+  <div class="components-grid">
+
+    <!-- Buttons -->
+    <div class="comp-card">
+      <div class="comp-title">Botões</div>
+      <div class="comp-demo">
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <button class="btn btn-primary">Começar grátis</button>
+          <button class="btn btn-cta">Assinar agora</button>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <button class="btn btn-secondary">Ver planos</button>
+          <button class="btn btn-ghost">Saiba mais</button>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
+          <button class="btn btn-primary btn-sm">Pequeno</button>
+          <button class="btn btn-primary">Normal</button>
+          <button class="btn btn-primary btn-lg">Grande</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Badges -->
+    <div class="comp-card">
+      <div class="comp-title">Badges & Status</div>
+      <div class="comp-demo">
+        <div class="badge-row">
+          <span class="badge badge-blue">● Ativo</span>
+          <span class="badge badge-green">✓ Pago</span>
+          <span class="badge badge-orange">⚠ Pendente</span>
+          <span class="badge badge-gray">Inativo</span>
+        </div>
+        <div class="badge-row">
+          <span class="badge badge-blue">Ploxo Fitness</span>
+          <span class="badge" style="background:var(--green-light); color:#065F46;">Personal</span>
+          <span class="badge" style="background:#FEF3C7; color:#92400E;">Pro</span>
+        </div>
+        <div class="badge-row">
+          <span class="badge" style="background:var(--blue); color:white;">Novo</span>
+          <span class="badge" style="background:var(--orange); color:white;">Beta</span>
+          <span class="badge" style="background:var(--text); color:white;">v2.0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inputs -->
+    <div class="comp-card">
+      <div class="comp-title">Campos de Formulário</div>
+      <div class="comp-demo">
+        <div class="input-demo">
+          <label class="input-label">Nome completo</label>
+          <input class="input-field" type="text" placeholder="João Silva" />
+          <span class="input-helper">Como aparece no seu perfil</span>
+        </div>
+        <div class="input-demo">
+          <label class="input-label">Email</label>
+          <input class="input-field error" type="email" value="joao@" />
+          <span class="input-error">Email inválido</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Metric Cards -->
+    <div class="comp-card">
+      <div class="comp-title">Cards de Métricas</div>
+      <div class="comp-demo">
+        <div class="ui-card">
+          <div class="card-header-row">
+            <div class="card-icon" style="background:var(--blue-light);">💪</div>
+            <span class="card-trend trend-up">↑ 8,4%</span>
+          </div>
+          <div class="card-metric">127</div>
+          <div class="card-metric-label">Alunos ativos este mês</div>
+        </div>
+        <div class="ui-card">
+          <div class="card-header-row">
+            <div class="card-icon" style="background:var(--green-light);">💰</div>
+            <span class="card-trend trend-up">↑ 12,1%</span>
+          </div>
+          <div class="card-metric" style="font-size:22px;">R$ 8.420</div>
+          <div class="card-metric-label">Receita do mês</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LAYOUT -->
+<section class="section" id="layout">
+  <div class="section-label">06 — Layout</div>
+  <h2 class="section-title">Sistema de Grid — Bento Layout</h2>
+  <p class="section-desc">O estilo Bento Grid é a identidade visual dos apps Ploxo. Cards modulares que se combinam para mostrar múltiplas informações com clareza.</p>
+
+  <div class="grid-demo">
+    <div class="bento-demo">
+      <div class="bento-cell blue span2">
+        <div class="cell-title">Ploxo Fitness</div>
+        <div class="cell-sub">Gestão completa para personal trainers</div>
+        <div class="cell-num">127 alunos</div>
+      </div>
+      <div class="bento-cell light">
+        <div class="cell-title" style="color:var(--text);">Próxima aula</div>
+        <div class="cell-sub" style="color:var(--text-muted);">Hoje, 15h00</div>
+        <div style="margin-top:12px; font-size:24px;">🏃</div>
+      </div>
+      <div class="bento-cell green">
+        <div class="cell-title" style="color:#065F46;">Taxa de retenção</div>
+        <div class="cell-sub" style="color:#6EE7B7;">últimos 3 meses</div>
+        <div class="cell-num" style="color:#065F46;">94%</div>
+      </div>
+      <div class="bento-cell light">
+        <div class="cell-title" style="color:var(--text);">Pagamentos</div>
+        <div class="cell-sub" style="color:var(--text-muted);">8 pendentes</div>
+        <div style="margin-top:8px; font-family:'JetBrains Mono',monospace; font-size:20px; font-weight:700; color:var(--orange);">R$ 1.240</div>
+      </div>
+      <div class="bento-cell dark span2">
+        <div class="cell-title">Dica do sistema</div>
+        <div class="cell-sub" style="color:rgba(255,255,255,0.6); line-height:1.5;">Configure o pagamento automático para seus alunos e reduza a inadimplência.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOZ E TOM -->
+<section class="section" id="voz">
+  <div class="section-label">07 — Conteúdo</div>
+  <h2 class="section-title">Voz & Tom de Marca</h2>
+  <p class="section-desc">A Ploxo fala como um parceiro de negócios experiente: direto, humano e encorajador. Nunca corporativo demais, nunca informal demais.</p>
+
+  <div class="voice-grid">
+    <div class="voice-card">
+      <div class="icon">🤝</div>
+      <h4>Parceiro, não fornecedor</h4>
+      <p>Falamos como quem entende o dia a dia do profissional autônomo. Celebramos as conquistas deles como nossas.</p>
+      <div class="do-dont">
+        <div class="do-item">Você cresceu 12% esse mês</div>
+        <div class="dont-item">O sistema registrou incremento de 12%</div>
+      </div>
+    </div>
+
+    <div class="voice-card">
+      <div class="icon">🎯</div>
+      <h4>Direto e prático</h4>
+      <p>Zero enrolação. Cada palavra serve a um propósito. Instruções claras, sem jargão técnico desnecessário.</p>
+      <div class="do-dont">
+        <div class="do-item">Adicione um aluno</div>
+        <div class="dont-item">Insira novo cadastro no sistema</div>
+      </div>
+    </div>
+
+    <div class="voice-card">
+      <div class="icon">🇧🇷</div>
+      <h4>Genuinamente brasileiro</h4>
+      <p>Linguagem natural do dia a dia, sem exageros. Próximo sem ser íntimo demais. Acolhedor sem perder profissionalismo.</p>
+      <div class="do-dont">
+        <div class="do-item">Boa tarde, João!</div>
+        <div class="dont-item">Olá! Tudo bem? Espero que esteja ótimo!</div>
+      </div>
+    </div>
+
+    <div class="voice-card">
+      <div class="icon">💡</div>
+      <h4>Encorajador, nunca ansioso</h4>
+      <p>Erros têm solução fácil. Alertas são oportunidades, não alarmes. Celebre progresso, normalize ajustes.</p>
+      <div class="do-dont">
+        <div class="do-item">3 pagamentos para confirmar</div>
+        <div class="dont-item">ATENÇÃO: pagamentos em atraso!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOVIMENTO -->
+<section class="section" id="movimento">
+  <div class="section-label">08 — Animação</div>
+  <h2 class="section-title">Movimento & Transições</h2>
+  <p class="section-desc">Animações suaves que comunicam responsividade. Nunca decorativas demais — cada movimento tem propósito. Passe o mouse nos exemplos abaixo.</p>
+
+  <div class="motion-grid">
+    <div class="motion-card">
+      <div class="motion-demo-box hover-demo"></div>
+      <div class="motion-name">Hover Lift</div>
+      <div class="motion-spec">translateY(-4px) · 200ms ease</div>
+      <div style="font-size:12px; color:var(--text-muted); margin-top:6px;">Cards, botões primários</div>
+    </div>
+    <div class="motion-card">
+      <div class="motion-demo-box scale-demo" style="background:var(--orange);"></div>
+      <div class="motion-name">Scale Tap</div>
+      <div class="motion-spec">scale(1.05) · 150ms ease</div>
+      <div style="font-size:12px; color:var(--text-muted); margin-top:6px;">Ícones, badges clicáveis</div>
+    </div>
+    <div class="motion-card">
+      <div class="motion-demo-box fade-demo" style="background:var(--green);"></div>
+      <div class="motion-name">Pulse Suave</div>
+      <div class="motion-spec">opacity 0.5→1 · 2s infinite</div>
+      <div style="font-size:12px; color:var(--text-muted); margin-top:6px;">Status ao vivo, loading</div>
+    </div>
+    <div class="motion-card">
+      <div style="width:100%; height:4px; background:var(--border); border-radius:9999px; overflow:hidden; margin-bottom:28px;">
+        <div style="height:100%; background:var(--blue); border-radius:9999px; animation:progress 2s ease infinite;"></div>
+      </div>
+      <style>@keyframes progress { 0%{width:0%} 100%{width:100%} }</style>
+      <div class="motion-name">Progress Bar</div>
+      <div class="motion-spec">width 0→100% · 2s ease</div>
+      <div style="font-size:12px; color:var(--text-muted); margin-top:6px;">Upload, carregamento</div>
+    </div>
+  </div>
+
+  <div style="background:var(--blue-light); border-radius:14px; padding:20px 24px; margin-top:20px; border-left:4px solid var(--blue);">
+    <strong style="font-size:14px;">Regra geral:</strong>
+    <span style="font-size:14px; color:var(--text-muted);"> Duração entre <code style="background:white; padding:2px 6px; border-radius:4px; font-family:'JetBrains Mono',monospace;">150ms</code> e <code style="background:white; padding:2px 6px; border-radius:4px; font-family:'JetBrains Mono',monospace;">300ms</code>. Sempre <code style="background:white; padding:2px 6px; border-radius:4px; font-family:'JetBrains Mono',monospace;">prefers-reduced-motion</code> respeitado.</span>
+  </div>
+</section>
+
+<!-- NÃO FAZER -->
+<section class="section" id="nao-fazer">
+  <div class="section-label">09 — Anti-Padrões</div>
+  <h2 class="section-title">O Que Não Fazer</h2>
+  <p class="section-desc">Erros comuns que enfraquecem a identidade Ploxo. Toda a equipe deve conhecer essas regras.</p>
+
+  <div class="rules-grid">
+    <div class="rule-card avoid">
+      <h4>🚫 Gradientes roxo/rosa</h4>
+      <p>Clichê de produto de IA genérico. A Ploxo tem identidade própria — azul e laranja.</p>
+    </div>
+    <div class="rule-card avoid">
+      <h4>🚫 Dark mode como padrão</h4>
+      <p>Nosso público inclui pessoas 40+. Light mode garante acessibilidade máxima.</p>
+    </div>
+    <div class="rule-card avoid">
+      <h4>🚫 Emojis como ícones de UI</h4>
+      <p>Use SVG — Lucide ou Heroicons. Emojis variam entre plataformas e parecem informais demais.</p>
+    </div>
+    <div class="rule-card avoid">
+      <h4>🚫 Texto todo em maiúsculas</h4>
+      <p>Exceto labels técnicos em monospace. Maiúsculas em parágrafos reduzem legibilidade.</p>
+    </div>
+    <div class="rule-card avoid">
+      <h4>🚫 Animações longas (&gt;300ms)</h4>
+      <p>Profissionais ocupados não têm paciência para transições lentas. Seja ágil.</p>
+    </div>
+    <div class="rule-card avoid">
+      <h4>🚫 Jargão técnico na UI</h4>
+      <p>Nosso usuário é personal trainer, não developer. "Cadastrar aluno", não "criar entidade".</p>
+    </div>
+    <div class="rule-card avoid">
+      <h4>🚫 Vermelho para informações neutras</h4>
+      <p>Vermelho = erro/perigo. Não use em destaques, preços ou informações comuns.</p>
+    </div>
+    <div class="rule-card avoid">
+      <h4>🚫 Contraste abaixo de 4.5:1</h4>
+      <p>Acessibilidade é obrigatória — WCAG AA no mínimo. Use ferramentas de checagem.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="brand-footer">
+  <div>
+    <div class="footer-logo">ploxo<span>.</span></div>
+    <div style="font-size:13px; color:rgba(255,255,255,0.4); margin-top:4px;">Brand System — Para uso interno e parceiros</div>
+  </div>
+  <div class="footer-meta">
+    v1.0 · 2025 · Confidencial
+  </div>
+</footer>
+
+</body>
+</html>
